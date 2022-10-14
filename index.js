@@ -29,7 +29,9 @@ app.use(bodyParser.urlencoded({ limit:"30mb", extended: true }));
 app.use(express.json());// body parser that parses the incoming request to json
 app.use(helmet());
 app.use(morgan("common"));
-app.use(cors({origin: true}));
+app.use(cors({
+    origin: "*"
+}));
 
 
 //routes
@@ -47,8 +49,4 @@ app.use(express.static(path.join(__dirname, "/client/build")));
 
 app.get("*", (req, res)=>{
     res.sendFile(path.join(__dirname, "/client/build", "index.html"));
-});
-
-app.listen(process.env.PORT || 5000, ()=>{
-    console.log(`Backend Server Running at ${process.env.PORT}`);
 });
