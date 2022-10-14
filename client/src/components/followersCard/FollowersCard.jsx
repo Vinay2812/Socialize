@@ -30,7 +30,7 @@ const Follower = ({other_user})=>{
     return (
         <div className="follower">
             <div>
-                <img src={other_user.profilePicture.url} alt="" className='followerImg' crossOrigin="anonymous"/>
+                <img src={other_user.profilePicture.url} alt="" className='followerImg'/>
                 <Link className="name" to={`/profile/${other_user._id}`}>
                     <span>{other_user.firstname} {other_user.lastname}</span>
                     <span>@{other_user.username}</span>
