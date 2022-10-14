@@ -138,7 +138,7 @@ const ProfileCard = ({location}) => {
     
   return (
      
-     <div className="profileCard" style={!profilePage?{width: "calc(100% - 5rem)"}:{}}>
+     <div className="profileCard" style={!profilePage?{width: "calc(100% - 5rem)", marginTop: "0.5rem"}:{}}>
         {uploading ? <Loader /> :
         <>
         <div className="profileImages">

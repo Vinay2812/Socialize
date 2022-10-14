@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import "./post.css"
-import { FavoriteBorderOutlined, FavoriteOutlined, MoreVert, DeleteOutline, ShareOutlined, EditOutlined, CloseOutlined, AddCommentOutlined, NearMeOutlined, Send, PersonAdd, RemoveCircleOutline } from "@material-ui/icons"
+import { FavoriteBorderOutlined, FavoriteOutlined, MoreVert, DeleteOutline, ShareOutlined, EditOutlined, CloseOutlined, AddCommentOutlined, NearMeOutlined, Send } from "@material-ui/icons"
 
 import PostComment from '../postComment/PostComment'
 import { useDispatch, useSelector } from 'react-redux'
@@ -18,8 +18,7 @@ import {Link} from "react-router-dom"
 import {storage} from "../../firebase/firebase"
 import { ref, deleteObject } from "firebase/storage"
 import { useRef } from 'react'
-
-
+import { format } from "timeago.js"
 
 function Dropdown ({setDropDownSelected, postData, userId}){
     const dispatch = useDispatch();
@@ -118,23 +117,6 @@ const Post = ({data}) => {
         }
     }
     
-    const postCreatedate = new Date(data.createdAt);
-
-    const date = {
-        day : postCreatedate.getDay(),
-        month: (postCreatedate.getMonth()+1),
-        year: postCreatedate.getFullYear()
-    }
-
-    const time = {
-        hours: postCreatedate.getHours(),
-        minutes: postCreatedate.getMinutes(),
-        seconds: postCreatedate.getSeconds(),
-    }
-
-    const postDate = ((date.day < 10)?"0":"")+date.day + "/" + ((date.month < 10)?"0":"")+date.month + "/" + date.year;
-    const postTime =  ((time.hours < 10)?"0":"")+time.hours+ ":" + ((time.minutes < 10)?"0":"") + time.minutes + ((time.hours > 12 || (time.hours === 12 && time.minutes > 0))?"pm":"am");
-    
     const commentRef = useRef();
 
     const dispatch = useDispatch();
@@ -149,9 +131,8 @@ const Post = ({data}) => {
         dispatch(addComment(data._id, postComment)).then(()=>{
             dispatch(getTimeLinePosts(user._id));
         });
-
-        
     }
+
 
 
   return (
@@ -167,8 +148,7 @@ const Post = ({data}) => {
                 </span>
             </Link>
             <div className='postTime'>
-                <span>{postDate}</span>
-                <span>{postTime}</span>
+                {format(data.createdAt)}
             </div> 
             {data.userId === user._id ? <MoreVert onClick={()=>setDropDownSelected(true)}/> : "" }
         </div>

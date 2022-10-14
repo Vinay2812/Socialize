@@ -42,10 +42,10 @@
     font-weight: 600;
     bottom: 0.2rem;
 }
-.postTop .postTime{
+.postTop > .postTime{
     position: absolute;
     color: var(--lightGray);
-    font-size: 0.7rem;
+    font-size: 0.9rem;
     display: flex;
     gap: 0.5rem;
     left: 3.7rem;

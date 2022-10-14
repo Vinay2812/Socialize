@@ -15,7 +15,7 @@ const handleFormValidation = (data)=>{
     let error = false;
     const onlyChar = /^[A-Za-z]*$/
     const usernameValidity = /^[A-Za-z_]/
-    const passwordValidity = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$/
+    // const passwordValidity = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$/
     const emailValidity = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/
     
     if(!onlyChar.test(data.firstname)){

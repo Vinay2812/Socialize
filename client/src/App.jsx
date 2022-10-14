@@ -7,16 +7,13 @@ import {Routes, Route, Navigate} from "react-router-dom"
 import { useSelector } from 'react-redux';
 
 
+
 function App() {
   const user = useSelector((state)=>{
     return state.authReducer.authData;
   });
   return (
     <div className="App">
-        {/* <Home /> */}
-        {/* <Profile /> */}
-        {/* <Auth /> */}
-
         <Routes>
           <Route path="/" element={user?<Navigate to = "home"/> : <Navigate to = "auth"/>}/>
           <Route path = "/home" element={user?<Home />:<Navigate to = "../auth"/>}/>

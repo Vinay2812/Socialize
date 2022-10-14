@@ -1,7 +1,7 @@
 import React, {useState, useRef} from 'react'
 import "./postShare.css"
 
-import {PhotoSizeSelectActualOutlined, PlayCircleOutline, LocationOnOutlined,  CancelOutlined, Add} from "@material-ui/icons"
+import { PlayCircleOutline,  CancelOutlined, AddPhotoAlternateOutlined, AddLocationOutlined, Bookmarks} from "@material-ui/icons"
 import {useDispatch, useSelector} from "react-redux"
 import { uploadPost } from '../../actions/UploadActions'
 // import { uploadImage, uploadPost, uploadVideo } from '../../actions/UploadActions'
@@ -25,9 +25,7 @@ const ShareOptions = ({handleSubmit, setIsPublicPost, reset})=>{
         <div className='shareContainer'>
             <div className='shareHeader'>
                 How do you want to share your post
-                <CancelOutlined onClick={()=>{
-                    reset();
-                }}/>
+                
             </div>
             <div className="shareOptions">
                 <div className="shareOption">
@@ -46,7 +44,7 @@ const ShareOptions = ({handleSubmit, setIsPublicPost, reset})=>{
                         name="public-private-post" 
                         id="privatePost" 
                         onChange={()=>setIsPublicPost(false)}
-                        defaultChecked
+                        defaultChecked={true}
                     />
                     <label htmlFor="privatePost">In Private</label>
                 </div>
@@ -59,7 +57,7 @@ const ShareOptions = ({handleSubmit, setIsPublicPost, reset})=>{
     )
 }
 
-const PostShare = () => {
+const PostShare = ({setPostShare}) => {
     const [image, setImage] = useState(null);
     const [video, setVideo] = useState(null);
 
@@ -70,12 +68,10 @@ const PostShare = () => {
     const descRef = useRef();
     const dispatch = useDispatch();
 
-    const [shareOptions, setShareOptions] = useState(false);
-    const [isPublicPost, setIsPublicPost] = useState(false);
-
+    const [isPublicPost, setIsPublicPost] = useState(true);
 
     const reset = () =>{
-        setShareOptions(false);
+        setPostShare(false);
         setImage(null);
         setVideo(null);
         setRows(1);
@@ -186,7 +182,7 @@ const PostShare = () => {
         }
         
     }
-    const [rows, setRows] = useState(1);
+    const [rows, setRows] = useState(4);
     const handleDesc = ()=>{
         setRows(descRef.current.value.split("\n").length);
     }
@@ -198,39 +194,30 @@ const PostShare = () => {
     ? <Loader />
     : isMyProfile
         ?   <div className="postShare">
-                <img src={user.profilePicture.url} alt="" />
-            <div>
-                <textarea 
-                    type="text" 
-                    placeholder="Wanna share something? Lets do it"
-                    ref={descRef}
-                    rows={rows}
-                    onChange = {handleDesc}
-                    required
-                />
-                <div className="postOptions">
-                    <div className="option"
+                <CancelOutlined onClick={()=>{
+                    reset();
+                }}/>
+                <div className="postShare-left">
+                    <div className="postShare-option"
                         onClick={()=>imageRef.current.click()}
                     >
-                        <PhotoSizeSelectActualOutlined />
-                        Photo
+                        <AddPhotoAlternateOutlined />
+                        <span>Add Image</span>
                     </div>
-                    <div className="option"
+                    <div className="postShare-option"
                         onClick={()=>videoRef.current.click()}
                     >
                         <PlayCircleOutline/>
-                        Video
+                        <span>Add Video</span>
                     </div>
-                    <div className="option">
-                        <LocationOnOutlined />
-                        Location
+                    <div className="postShare-option">
+                        <Bookmarks />
+                        <span>Tag people</span>
                     </div>
-                    {!shareOptions?<div className="option" onClick={()=>setShareOptions(true)}>
-                        <Add />
-                        New post
-                    </div>:''
-                    }
-                    
+                    <div className="postShare-option">
+                        <AddLocationOutlined />
+                        <span>Add Location</span>
+                    </div>
                     <div style={{display:"none"}}>
                         <input 
                             type="file" 
@@ -253,43 +240,52 @@ const PostShare = () => {
                             }}
                         />
                     </div>
-
-                    
                 </div>
-                {image && (
-                        <div className="previewImage">
-                            <CancelOutlined
-                                onClick={()=>setImage(null)}
-                            />
-                            <img src={URL.createObjectURL(image?image:"")} alt=""/>
-                        </div>
-                )}
-                {video && (
-                        <div className="previewImage">
-                            <CancelOutlined
-                                onClick={()=>setVideo(null)}
-                                style={{zIndex: "1000"}}
-                            />
-                            <video controls style={{width:"100%"}}>
-                                <source src={URL.createObjectURL(video)} type="video/webm" />
-                                <source src={URL.createObjectURL(video)} type="video/mp4" />
-                            </video>   
-                        </div>
-                )}
-                {shareOptions
-                    ?<ShareOptions 
+                
+                <div className='postShare-right'>
+                    <textarea 
+                            type="text" 
+                            placeholder="Write post description"
+                            ref={descRef}
+                            rows={rows}
+                            onChange = {handleDesc}
+                            required
+                    />
+                    
+                    {image && (
+                            <div className="previewImage">
+                                <CancelOutlined
+                                    onClick={()=>setImage(null)}
+                                />
+                                <img src={URL.createObjectURL(image?image:"")} alt=""/>
+                            </div>
+                    )}
+                    {video && (
+                            <div className="previewImage">
+                                <CancelOutlined
+                                    onClick={()=>setVideo(null)}
+                                    style={{zIndex: "1000"}}
+                                />
+                                <video controls style={{width:"100%"}}>
+                                    <source src={URL.createObjectURL(video)} type="video/webm" />
+                                    <source src={URL.createObjectURL(video)} type="video/mp4" />
+                                </video>   
+                            </div>
+                    )}
+                    
+                    <ShareOptions 
                         handleSubmit={handleSubmit} 
                         reset = {reset}
                         setIsPublicPost = {setIsPublicPost}
                     />
-                :''}
-            </div>
+                    
+                    
+                </div>
             
-        </div>
+            </div>
         : ""
     }
     
-
     </>
   )
 }

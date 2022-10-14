@@ -8,17 +8,13 @@ import "./home.css"
 
 import { toastParameters } from '../../components/toastParameters'
 
+import Navbar from '../../components/navbar/Navbar'
 
 
 function Home() {
-  const username = useSelector((state)=>state.authReducer.authData.user.username);
-  useEffect(()=>{
-    toast.success(`Welcome ${username}`, toastParameters)
-  }, [username]);
-
   return (
     <>
-
+    <Navbar />
     <div className="home">
         <ProfileSide location="homePage"/>
         <PostSide />

@@ -69,7 +69,16 @@ const UserSchema = mongoose.Schema(
         following: {
             type: Array,
             default: []
-        }
+        },
+        requestSend: {
+            type: Array,
+            default: []
+        },
+        requestReceived: {
+            type: Array,
+            default: []
+        },
+
     }, 
     {
         timestamps: true

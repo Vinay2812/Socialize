@@ -8,6 +8,7 @@
     box-shadow: 0px 0px 15px 6px #000000;
     background-color: var(--black);
     justify-content: center;
+    margin-top: 1rem;
 }
 
 .trendCard > span{
