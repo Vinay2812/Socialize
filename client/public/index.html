@@ -5,9 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="Content-Security-Policy" content=
       "
-        img-src 'self' https: data: 'unsafe-inline';
-        script-src 'self' https: data: 'unsafe-inline';
-        media-src 'self' https: data: 'unsafe-inline'
+      default-src 'self';
+      script-src 'report-sample' 'self';
+      style-src 'report-sample' 'self' https://fonts.googleapis.com;
+      object-src 'none';
+      base-uri 'self';
+      connect-src 'self';
+      font-src 'self' https://fonts.gstatic.com;
+      frame-src 'self';
+      img-src 'self' https://firebasestorage.googleapis.com;
+      manifest-src 'self';
+      media-src 'self' https://firebasestorage.googleapis.com;
+      report-uri https://634960c11b097796c21f7883.endpoint.csper.io/?v=0;
+      worker-src 'none';
       ">
     <meta
       name="description"
