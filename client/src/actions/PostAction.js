@@ -16,6 +16,7 @@ export const getTimeLinePosts = (userId) =>{
 export const addComment = (postId, comment)=>{
     return async(dispatch) =>{
         try {
+            dispatch({type: "ADD_COMMENT", data: {postId, comment}})
             await PostApi.addComment(postId, comment);
         } catch (err) {
             console.log(err);

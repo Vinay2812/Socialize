@@ -29,9 +29,7 @@ app.use(bodyParser.urlencoded({ limit:"30mb", extended: true }));
 app.use(express.json());// body parser that parses the incoming request to json
 app.use(helmet());
 app.use(morgan("common"));
-app.use(cors({
-    origin: "*",
-}));
+app.use(cors());
 
 
 //routes
