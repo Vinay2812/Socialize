@@ -1,0 +1,59 @@
+.rightSide{
+    height: 100vh;
+    width: calc(100% - 6rem);
+    position: sticky;
+    padding: 0.5rem 1rem 1rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    overflow-y: scroll;
+    top: 0;
+    margin-left: 1rem;
+}
+
+.navIcons{
+    display: flex;
+    margin-top: 1rem;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1.75rem 1.25rem 1.75rem;
+    -webkit-box-shadow: 0px 0px 15px 6px #000000; 
+    box-shadow: 0px 0px 15px 6px #000000;
+    border-radius: 30px;
+}
+
+.navIcons > div{
+    position: relative;
+}
+
+.navIcons>div>span, .navIcons>div>a>span{
+    position: absolute;
+    font-size: 9.5px;
+    bottom: -10px;
+    left: 0;
+}
+
+.navIcons>div:nth-of-type(2)>span{
+    left: -20px;
+}
+
+.navIcons>div:nth-of-type(4)>span{
+    left: -5px;
+}
+
+.navIcons>div:hover{
+    transition: ease-in 200ms;
+    color: var(--lightblue);
+    cursor: pointer;
+}
+
+.r-button{
+    width: 40%;
+    height: 2.2rem;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 16px;
+    border-radius: 3rem;
+}

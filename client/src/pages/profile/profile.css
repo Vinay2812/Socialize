@@ -1,0 +1,19 @@
+.profile{
+    position: relative;
+    display: grid;
+    grid-template-columns: 25% 45% 25%;
+    gap: 2.5%;
+    height: 100vh;
+    overflow-y: scroll;
+}
+
+
+
+.profileCenter{
+    padding-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 1rem;
+}

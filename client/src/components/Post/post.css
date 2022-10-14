@@ -1,0 +1,191 @@
+.post{
+    width: calc(100% - 2rem);
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    -webkit-box-shadow: 0px 0px 15px 6px #000000; 
+    box-shadow: 0px 0px 15px 6px #000000;
+    background-color: var(--black);
+    gap: 0.5rem;
+    position: relative;
+}
+
+.postTop{
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.5rem;
+}
+.postTop > svg{
+    position: absolute;
+    right: 0.5rem;
+    cursor: pointer;
+}
+.postTop > svg:hover{
+    color: var(--blue);
+}
+.postTop > img{
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.postTop > a{
+    text-decoration: none;
+    color: inherit;
+}
+.postTop > a > span{
+    position: relative;
+    font-size: 1.2rem;
+    font-weight: 600;
+    bottom: 0.2rem;
+}
+.postTop .postTime{
+    position: absolute;
+    color: var(--lightGray);
+    font-size: 0.7rem;
+    display: flex;
+    gap: 0.5rem;
+    left: 3.7rem;
+    bottom: 0.2rem;
+}
+.post > img, .post > video{
+    width: 100%;
+    object-fit: contain;
+    max-height: 30rem;
+    background-color: var(--white);
+}
+
+.postBottom{
+    display: flex;
+    flex-direction: column;
+}
+.postBottom > span{
+    padding-left: 0.5rem;;
+    font-size: 13px;
+    color: var(--lightGray);
+}
+
+.postReact{
+    display: flex;
+    gap: 1.2rem;
+    align-items: center;
+    padding: 0.8rem 0.5rem;
+    border-top: 2px dotted var(--white);
+}
+.postReact > div > svg{
+    cursor: pointer;
+    height: 1.75rem;
+    width: 1.75rem;
+}
+.postReact > div > svg:hover{
+    color: var(--blue);
+    transition: ease-in 200ms;
+}
+.postReact .like{
+    position: relative;
+}
+.postReact .like > span{
+    position: absolute;
+    bottom: -0.8rem;
+    left: -0.4rem;
+    font-size: 13px;
+    width: 2.8rem;
+}
+
+.postReact .allComments{
+    position: relative;
+}
+.postReact .allComments > span{
+    position: absolute;
+    top: -0.5rem;
+    right: -0.4rem;
+    aspect-ratio: 1;
+    min-width: 1.2rem;
+    background-color: rgb(183, 11, 11);
+    border-radius: 50%;
+    text-align: center;
+}
+
+.postReact > div > svg:nth-of-type(3){
+    height: 2rem;
+    width: 2rem;
+    transform: rotate(8deg);
+}
+
+
+.description{
+    padding: 0 8px;
+    white-space: pre-wrap;
+    line-height: 1.5;
+    font-weight: 400;
+    color: var(--white);
+}
+
+.postOperationsOptions{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    border-radius: 30px;
+    z-index: 100;
+    right: -5rem;
+    top:2rem;
+    padding: 1rem;
+    -webkit-box-shadow: 0px 0px 15px 6px #000000; 
+    box-shadow: 0px 0px 15px 6px #000000;
+    background-color: var(--darkgray);
+}
+
+.postOperationsOptions > div > span{
+    width: 4rem;
+}
+
+.postOperationsOptions > div{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    font-weight: 500;
+}
+
+.postOperationsOptions > div:hover{
+    color: var(--lightblue);
+    font-size: 1.1rem;
+    transition: 200ms ease-in;
+}
+
+.newComment{
+    display: flex;
+    gap: 0.7rem;
+    padding:1rem 0 0.5rem 0.5rem;
+    align-items: center;
+    width: calc(100% - 0.5rem);
+    border-top: 2px dotted var(--lightGray);
+    
+}
+.newComment > img{
+    aspect-ratio: 1;
+    height: 2rem;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.newComment > input{
+    width: 86%;
+    background-color: var(--darkgray);
+    outline: none;
+    border: none;
+    border-radius: 30px;
+    padding: 0.5rem 1rem;
+    color: var(--white);
+    font-size: 15px;
+}
+
+.newComment > svg:hover{
+    cursor: pointer;
+    color: var(--lightblue);
+    transition: 200ms ease-in;
+}

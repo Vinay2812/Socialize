@@ -1,0 +1,51 @@
+:root {
+  --photo: #4CB256;
+  --location: #EEEEEE;
+  --video: #EF5757;
+  --schedule: #E1AE4A;
+
+  /* My Colors */
+  --black: #121212;
+  --lightBlack: #181818;
+  --darkgray: #282828;
+  --gray: #404040;
+  --lightGray: #b3b3b3;
+  --white: #eaeaea;
+  --blue: #0096c7;
+  --lightblue: #00bbf9;
+  --darkblue: #0096c7;
+  --lightwhite: #fff;
+}
+
+.App{
+  overflow:hidden;
+  color: var(--white);
+}
+
+.button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+  padding: 4px;
+  border: none;
+  background-color: var(--blue);
+  cursor: pointer;
+  transition: all 100ms ease-out;
+  color: var(--lightwhite);
+  height: 2.5rem;
+  width: 6rem;
+  
+}
+
+.button:hover{
+  background-color: transparent;
+  transition: 200ms ease-in;
+  color: var(--darkblue);
+  border: 2px solid var(--darkblue);
+}
+
+::-webkit-scrollbar{
+  display: none;
+}
+

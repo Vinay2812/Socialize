@@ -1,0 +1,98 @@
+.auth{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #080710;
+    font-size: 18px;
+}
+
+.container input{
+    color: var(--lightwhite);
+    font-size: 1rem;
+    border: none;
+    outline: none;
+    width: calc(50% - 3rem);
+    height: 3rem;
+    border-radius: 2rem;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1rem;
+    background-color: transparent;
+    border: 2px solid var(--gray);
+}
+
+.container input:focus, .container input:hover{
+    border: 2px solid var(--lightblue);
+    transition: 200ms ease-in;
+}
+
+.container  input::placeholder{
+    color: var(--lightGray);
+}
+
+.container{
+    width: 40rem;
+    background-color: rgba(255, 255, 255, 0.052);
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    border-radius: 10px;
+    backdrop-filter: blur(12px);
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    color: var(--lightwhite);
+    padding: 1rem;
+}
+
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--gray);
+    color:var(--darkblue);
+}
+.names, .passwords, .username-mobile{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
+}
+.bottom{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-weight: 200;
+}
+.bottom > span{
+    text-decoration: none;
+    color: var(--darkblue);
+    font-weight: 600;
+    border-bottom: 2px solid var(--darkblue);
+}
+.bottom > span:hover{
+    color: var(--lightblue);
+    transition: 200ms ease-in;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.b-auth{
+    font-size: 1.2rem;
+    height: 2.5rem;
+    width: 8rem;
+    align-self: center;
+    border-radius: 2rem;
+    font-weight: 400;
+}
+

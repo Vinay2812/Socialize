@@ -1,0 +1,89 @@
+.comment-section{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0;
+    padding-top: 0.5rem;
+}
+.postComment{
+    color: var(--white);
+    padding-left: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(236, 232, 232, 0.096);
+    border-radius: 0.5rem;
+}
+.comment-title{
+    display: flex;
+    border-top: 2px dotted var(--lightGray);
+    border-bottom: 2px dotted var(--lightGray);
+    padding: 0.2rem 0.5rem;
+    font-size: 17px;
+    font-weight: 600;
+    align-items: center;
+    justify-content: center;
+}
+
+.comment-title > span > div{
+    display: inline-block;
+    min-width: 1.2rem;
+    aspect-ratio: 1;
+    background-color: rgb(183, 11, 11);
+    text-align: center;
+    border-radius: 50%;
+    font-size: 14px;
+}
+
+.comment-title > svg{
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+.comment-title > svg:hover{
+    color: var(--lightblue);
+    transition: 200ms ease-in;
+    font-size: 2rem;
+}
+.text{
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    min-height: 2.5rem;
+    /* padding: 0.5rem; */
+}
+.userName{
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+.comment{
+    font-size: 0.9rem;
+    /* padding: 0.3rem 0 0 0; */
+    font-weight: 400;
+}
+
+.delete-comment{
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    padding: 0.5rem;
+}
+.delete-comment > svg{
+    aspect-ratio: 1;
+    width: 1.3rem;
+}
+.delete-comment > svg:hover{
+    width: 1.4rem;
+    color: var(--lightblue);
+    transition: 200ms ease-in;
+    cursor: pointer;
+}
+
+.no-comments{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 0.5rem;
+    font-size: 400;
+}
+
+

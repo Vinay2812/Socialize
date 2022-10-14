@@ -1,0 +1,173 @@
+.postShare{
+    width: calc(100% - 2rem);
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 2rem;
+    -webkit-box-shadow: 0px 0px 15px 6px #000000; 
+    box-shadow: 0px 0px 15px 6px #000000;
+    background-color: var(--black);
+}
+.postShare>img{
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.postShare>div{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    gap: 1.5rem;
+    padding: 0.5rem 0;
+}
+.postShare>div>textarea{
+    background-color: var(--white);
+    border-radius: 30px;
+    padding: 0.5rem 1rem;
+    font-size: 15px;
+    border: none;
+    outline: none;
+    resize: none;
+}
+.postOptions{
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+    right: 5%;
+}
+
+.option{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.05rem;
+    font-weight: 500;
+}
+.option:nth-of-type(1){
+    color:var(--photo);
+}
+.option:nth-of-type(2){
+    color:var(--video);
+}
+.option:nth-of-type(3){
+    color: var(--schedule);
+}
+.option:nth-of-type(4){
+    color: var(--darkblue);
+}
+
+.option > svg{
+    margin-right: 0.4rem;
+}
+.option:hover{
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--lightblue);
+    transition: ease-in 200ms;
+}
+
+.ps-button{
+    padding: 5px 25px;
+    font-size: 15px;
+    font-weight: 600;
+    justify-self: center;
+    height: 2rem;
+    width: 5rem;
+}
+
+.previewImage{
+    position: relative;
+    border-radius: 10px;
+    right: 5%;
+}
+.previewImage > svg{
+    position: absolute;
+    right: 1rem;
+    top: 0.5rem;
+    cursor: pointer;
+    color: rgb(225, 32, 32);
+}
+.previewImage > img, .previewImage > video{
+    width: 100%;
+    max-height: 30rem;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.previewImage > svg:hover{
+    color: var(--black);
+}
+
+.shareContainer{
+    position: relative;
+    right: 5%;
+    border: 2px dashed var(--lightGray);
+    border-radius: 30px;
+    transition: 500ms ease-in-out;
+}
+
+.shareContainer > .shareHeader{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    padding: 1rem 0;
+    color: var(--blue);
+    font-weight: 500;
+    border-bottom: 2px dashed var(--lightGray);
+}
+
+.shareContainer > .shareHeader > svg{
+    position: absolute;
+    right: 1.5rem;
+    top: 1.2rem;
+    color: rgb(225, 32, 32);
+}
+
+.shareContainer > .shareHeader > svg:hover{
+    cursor: pointer;
+    color: var(--blue);
+}
+
+.shareContainer > .shareOptions{
+    display: flex;
+    padding: 1rem 0;
+    justify-content: center;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.shareContainer > .shareOptions > .shareOption{
+    display: flex;
+    gap: 0.2rem;
+    font-size: 1.15rem;
+}
+.shareContainer > .shareOptions > .shareOption > input{
+    width: 1rem;
+    aspect-ratio: 1;
+}
+
+.cancel-btn{
+    background-color: transparent;
+    color: var(--blue);
+    border: 2px solid var(--blue);
+    padding: 8px 15px;
+    font-size: 15px;
+    font-weight: 500;
+    justify-self: center;
+    border-radius: 25px;
+}
+
+.cancel-btn:hover{
+    /* font-size: 16px; */
+    color: var(--lightblue);
+    border:3px solid var(--lightblue);
+    font-weight: 600;
+    transition: 400ms ease-in;
+    padding: 7px 13px;
+}

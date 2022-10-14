@@ -1,0 +1,42 @@
+.logoSearch{
+    width: calc(100% - 5rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    gap: 0.5rem;
+    position: relative;
+}
+.search{
+    display: flex;
+    border-radius: 75px;
+    padding: 4px 0.5rem;
+    background-color: var(--white);
+    width: calc(100% - 5rem);
+}
+.search>input{
+    border: none;
+    font-size: 13.5px;
+    width: 100%;
+}
+
+.search>input:focus{
+    outline: none;
+}
+.searchIcon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 1rem;
+}
+.searchIcon:hover{
+    cursor: pointer;
+}
+.icon{
+    color: black;
+}
+.logo{
+    width: 3rem;
+    height: 2.5rem;
+}
