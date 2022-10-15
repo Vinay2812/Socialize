@@ -1,4 +1,4 @@
-import { AddBox, ChatOutlined, ExitToApp, GroupOutlined, HomeOutlined, NotificationsNoneOutlined, Search, SettingsOutlined, TrendingUp } from "@material-ui/icons"
+import { AddBox, ChatOutlined, ExitToApp, GroupOutlined, HomeOutlined, NotificationsNoneOutlined, Search, TrendingUp } from "@material-ui/icons"
 import { useDispatch, useSelector } from "react-redux"
 import { Link, useParams } from "react-router-dom"
 import "./navbar.css"
@@ -84,11 +84,6 @@ const Navbar = () => {
               <div className = 'sphere'></div>
               <NotificationsNoneOutlined />
               <span>Notifications</span>
-            </div>
-            <div className={rightActive === "settings"?"navIcons active" : "navIcons"} onClick={()=>setRightActive("settings")}>
-              <div className = 'sphere'></div>
-              <SettingsOutlined />
-              <span>Settings</span>
             </div>
             <div className="navIcons" onClick={handleLogout}>
               <div className = 'sphere'></div>

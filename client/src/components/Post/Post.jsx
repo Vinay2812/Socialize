@@ -122,7 +122,10 @@ const Post = ({data}) => {
     const dispatch = useDispatch();
 
     const handleComment = ()=>{
-        
+        if(commentRef.current.value.length < 1){
+            toast.warning("Comment can't be empty", toastParameters);
+            return;
+        }
         const postComment = {
             comment: commentRef.current.value,
             commenterId: user._id,
@@ -133,7 +136,7 @@ const Post = ({data}) => {
         });
     }
 
-
+    const [rows, setRows] = useState(1);
 
   return (
     <>
@@ -143,9 +146,10 @@ const Post = ({data}) => {
             {/* <img src={process.env.REACT_APP_PUBLIC_FOLDER_IMAGES + postUser.profilePicture} alt=""/> */}
             <img src={profileImage} alt=""/>
             <Link to={`/profile/${data.userId}`}>
-                <span>
+                <span className='name'>
                     {postUser.firstname} {postUser.lastname}
                 </span>
+                <span className='username'>@{postUser.username}</span>
             </Link>
             <div className='postTime'>
                 {format(data.createdAt)}
@@ -199,7 +203,7 @@ const Post = ({data}) => {
         </div>
         <div className="newComment">
             <img src={user.profilePicture.url} alt=""/>
-            <input type="text" name="comment" placeholder='New Comment' ref={commentRef}/>
+            <textarea type="text" name="comment" placeholder='New Comment' ref={commentRef} rows = {rows} onChange={()=>{setRows(Math.max(1, commentRef.current.value?.split("\n").length))}}/>
             <Send onClick={handleComment}/>
         </div>
     </div>

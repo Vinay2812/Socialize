@@ -47,7 +47,10 @@
 ::-webkit-scrollbar{
   display: none;
 }
-
+.active{
+  position: relative;
+  top: 0.1rem;
+}
 .active > .sphere {
   position: absolute;
   width: 2.2rem;
@@ -67,7 +70,7 @@
 .active span{
   color: var(--blue);
   font-weight: 600;
-  font-size: 12px !important;
+  font-size: 10px !important;
 }
 .active:hover{
   color: var(--white) !important;

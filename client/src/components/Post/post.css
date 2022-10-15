@@ -4,8 +4,8 @@
     flex-direction: column;
     padding: 0.5rem 1rem;
     border-radius: 2rem;
-    -webkit-box-shadow: 0px 0px 15px 6px #000000; 
-    box-shadow: 0px 0px 15px 6px #000000;
+    -webkit-box-shadow: 0 0 0.9rem 0.35rem #000000; 
+    box-shadow: 0px 0px 1rem 0.35rem #000000;
     background-color: var(--black);
     gap: 0.5rem;
     position: relative;
@@ -14,15 +14,16 @@
 .postTop{
     position: relative;
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     gap: 0.6rem;
     padding: 0.5rem;
 }
+
 .postTop > svg{
     position: absolute;
-    right: 0.5rem;
-    cursor: pointer;
+    right: 0;
 }
+
 .postTop > svg:hover{
     color: var(--blue);
 }
@@ -34,22 +35,27 @@
 }
 .postTop > a{
     text-decoration: none;
-    color: inherit;
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
 }
-.postTop > a > span{
-    position: relative;
-    font-size: 1.2rem;
-    font-weight: 600;
-    bottom: 0.2rem;
+.postTop > a > .name{
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+.postTop > a > .username{
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--lightGray);
+    /* margin-left: 0.5rem; */
 }
 .postTop > .postTime{
-    position: absolute;
+    position: relative;
     color: var(--lightGray);
-    font-size: 0.9rem;
-    display: flex;
-    gap: 0.5rem;
-    left: 3.7rem;
-    bottom: 0.2rem;
+    font-size: 0.65rem;
+    top: 0.2rem;
+    right: 0.3rem;
+    
 }
 .post > img, .post > video{
     width: 100%;
@@ -63,8 +69,8 @@
     flex-direction: column;
 }
 .postBottom > span{
-    padding-left: 0.5rem;;
-    font-size: 13px;
+    padding-left: 0.5rem;
+    font-size: 0.82rem;
     color: var(--lightGray);
 }
 
@@ -91,7 +97,7 @@
     position: absolute;
     bottom: -0.8rem;
     left: -0.4rem;
-    font-size: 13px;
+    font-size: 0.8rem;
     width: 2.8rem;
 }
 
@@ -117,7 +123,7 @@
 
 
 .description{
-    padding: 0 8px;
+    padding: 0 0.5rem;
     white-space: pre-wrap;
     line-height: 1.5;
     font-weight: 400;
@@ -129,13 +135,13 @@
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    border-radius: 30px;
+    border-radius: 1.8rem;
     z-index: 100;
     right: -5rem;
     top:2rem;
     padding: 1rem;
-    -webkit-box-shadow: 0px 0px 15px 6px #000000; 
-    box-shadow: 0px 0px 15px 6px #000000;
+    -webkit-box-shadow: 0 0 0.9rem 0.35rem #000000; 
+    box-shadow: 0px 0px 1rem 0.35rem #000000;
     background-color: var(--darkgray);
 }
 
@@ -173,15 +179,16 @@
     border-radius: 50%;
     object-fit: cover;
 }
-.newComment > input{
+.newComment > textarea{
     width: 86%;
     background-color: var(--darkgray);
     outline: none;
     border: none;
-    border-radius: 30px;
+    border-radius: 2rem;
     padding: 0.5rem 1rem;
     color: var(--white);
-    font-size: 15px;
+    font-size: 1rem;
+    resize: none;
 }
 
 .newComment > svg:hover{

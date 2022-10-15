@@ -23,14 +23,14 @@
 }
 .search{
     display: flex;
-    border-radius: 75px;
-    padding: 4px 0.5rem;
+    border-radius: 5rem;
+    padding: 0.25rem 0.5rem;
     background-color: var(--white);
     width: calc(100% - 5rem);
 }
 .search>input{
     border: none;
-    font-size: 13.5px;
+    font-size: 0.95rem;
     width: 100%;
 }
 
@@ -61,9 +61,9 @@
     display: flex;
     justify-content: space-around;
     padding: 0.5rem 0;
-    -webkit-box-shadow: 0px 0px 15px 6px #000000; 
-    box-shadow: 0px 0px 15px 6px #000000;
-    border-radius: 20px;
+    -webkit-box-shadow: 0 0 0.9rem 0.35rem #000000; 
+    box-shadow: 0px 0px 1rem 0.35rem #000000;
+    border-radius: 2rem;
     width: calc(100% - 3rem);
     margin-top: 1rem;
     margin-left: 1rem;
@@ -73,12 +73,12 @@
 .rightNavIcons{
     display: flex;
     justify-content: space-around;
-    align-items:flex-start;
+    align-items:center;
     padding: 0.5rem 0;
-    -webkit-box-shadow: 0px 0px 15px 6px #000000; 
-    box-shadow: 0px 0px 15px 6px #000000;
-    border-radius: 20px;
-    width: calc(100% - 8.5rem);
+    -webkit-box-shadow: 0 0 0.9rem 0.35rem #000000; 
+    box-shadow: 0px 0px 1rem 0.35rem #000000;
+    border-radius: 1.25rem;
+    width: calc(100% - 7.5rem);
     margin-top: 1rem;
 }
 
@@ -96,11 +96,11 @@
 
 
 .active span{
-    padding-top: 5px;
+    padding-top: 0.3rem;
 }
 
 .navIcons span{
-    font-size: 10px;
+    font-size: 0.75rem;
 }
 .navIcons>svg, .navIcons>a>svg{
     font-size: 1.6rem;
@@ -129,7 +129,7 @@
     /* height: 100vh; */
     width: 100%;
     z-index: 2;
-    filter: blur(4px);
+    filter: blur(0.25rem);
     background-color: rgba(128, 128, 128, 0.358);
     overflow-y: hidden;
     transition: 10000ms ease-in-out;
@@ -142,3 +142,4 @@
     left: calc(50% - 20rem);
     transition: 10000ms ease-in-out;
 }
+

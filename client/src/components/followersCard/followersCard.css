@@ -4,7 +4,6 @@
     gap: 1rem;
     display: flex;
     flex-direction: column;
-    font-size: 13px;
     padding: 1rem;
     margin-left: 1.5rem;
 }
@@ -29,12 +28,12 @@
 
 .follower>div{
     display: flex;
-    gap: 10px;
+    gap: 0.5rem;
 }
 
 .followerImg{
-    width: 3.2rem;
-    height: 3.2rem;
+    width: 3rem;
+    height: 3rem;
     border-radius: 50%;
     object-fit: cover;
 }
@@ -46,6 +45,8 @@
     justify-content: center;
     text-decoration: none;
     color: inherit;
+    font-size: 0.9rem;
+    padding-left: 0.2rem;
 }
 .name>span:nth-of-type(1){
     font-weight: 500;
@@ -56,17 +57,19 @@
 
 .fc-button{
     height: 2rem;
+    width: 7rem;
     padding: 0 1rem;
     font-weight: 600;
+    font-size: 1rem;
 }
 
 .unfollow{
-    background-color: transparent;
+    background: transparent;
     color:var(--blue);
     border: 2px solid var(--blue);
 }
 
 .unfollow:hover{
-    background-color: var(--blue);
+    background: linear-gradient(to right, var(--blue), var(--lightblue));
     color: var(--white);
 }

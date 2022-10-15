@@ -20,10 +20,10 @@ const Comment = ({data, post})=>{
         dispatch(deleteComment(post._id, comment)).then(()=>dispatch(getTimeLinePosts(user._id)));
     }
     return (
-            <div className="postComment">
+            <div className="postComment" style={!(data.commenterId === post.userId) ? {alignSelf: "flex-start"}: {alignSelf: "flex-end", backgroundColor: "rgba(236, 232, 232, 0.203)"}}>
                 <div className='text'>
                     <div className="userName">
-                        {data.commenterName}
+                        @{data.commenterName}
                     </div>
                     <div className="comment">
                         {data.comment}
@@ -37,7 +37,7 @@ const Comment = ({data, post})=>{
 }
 
 const PostComment = ({commentData, post}) => {
-    
+   
   return (
     <>
         <div className="comment-title">

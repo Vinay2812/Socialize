@@ -8,10 +8,10 @@
 .postComment{
     color: var(--white);
     padding-left: 0.5rem;
+    width: 80%;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    background-color: rgba(236, 232, 232, 0.096);
+    background-color: rgba(236, 232, 232, 0.056);
     border-radius: 0.5rem;
 }
 .comment-title{
@@ -19,7 +19,7 @@
     border-top: 2px dotted var(--lightGray);
     border-bottom: 2px dotted var(--lightGray);
     padding: 0.2rem 0.5rem;
-    font-size: 17px;
+    font-size: 1.1rem;
     font-weight: 600;
     align-items: center;
     justify-content: center;
@@ -32,7 +32,7 @@
     background-color: rgb(183, 11, 11);
     text-align: center;
     border-radius: 50%;
-    font-size: 14px;
+    font-size: 0.875rem;
 }
 
 .comment-title > svg{
@@ -46,19 +46,20 @@
 }
 .text{
     display: flex;
-    gap: 0.5rem;
-    align-items: center;
-    min-height: 2.5rem;
-    /* padding: 0.5rem; */
+    flex-direction: column;
+    padding: 0.4rem;
+    gap: 0.2rem;
 }
 .userName{
-    font-size: 1.1rem;
-    font-weight: 500;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--white)
 }
 .comment{
     font-size: 0.9rem;
-    /* padding: 0.3rem 0 0 0; */
-    font-weight: 400;
+    padding-left:0.3rem;
+    font-weight: 300;
+    white-space: pre-wrap;
 }
 
 .delete-comment{
