@@ -16,8 +16,8 @@
 }
 .comment-title{
     display: flex;
-    border-top: 2px dotted var(--lightGray);
-    border-bottom: 2px dotted var(--lightGray);
+    border-top: 0.125rem dotted var(--lightGray);
+    border-bottom: 0.125rem dotted var(--lightGray);
     padding: 0.2rem 0.5rem;
     font-size: 1.1rem;
     font-weight: 600;

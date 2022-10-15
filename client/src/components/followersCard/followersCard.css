@@ -11,14 +11,14 @@
     margin: 0;
     align-self: center;
     font-size: 1.25rem;
-    border-bottom: 2px solid var(--blue);
+    border-bottom: 0.125 solid var(--blue);
     color: var(--blue);
     cursor: pointer;
 }
 .followersCard > h3:hover{
     transition: ease-in 200ms;
     color: var(--lightblue);
-    border-bottom: 2px solid var(--lightblue);
+    border-bottom: 0.125rem solid var(--lightblue);
 }
 .follower{
     display: flex;
@@ -57,16 +57,16 @@
 
 .fc-button{
     height: 2rem;
-    width: 7rem;
+    width: 6rem;
     padding: 0 1rem;
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 0.9rem;
 }
 
 .unfollow{
     background: transparent;
     color:var(--blue);
-    border: 2px solid var(--blue);
+    border: 0.125rem solid var(--blue);
 }
 
 .unfollow:hover{

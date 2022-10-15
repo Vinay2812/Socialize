@@ -1,3 +1,7 @@
+*{
+    margin: 0;
+    padding: 0;
+}
 .home{
     position: relative;
     display: grid;
@@ -6,3 +10,41 @@
     height: calc(100vh - 5rem);
     overflow-y: scroll;
 }
+
+.home-mobile-navbar{
+    display: none;
+}
+
+@media screen and (max-width: 1024px) and (min-width: 850px){
+    .home{
+        grid-template-columns: 60% 37.5%;
+    }
+    .home-profileSide{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 850px){
+    .home{
+        grid-template-columns: 80%; 
+        justify-content: center;
+    }
+    .home-profileSide{
+        display: none;
+    }
+    .home-rightSide{
+        display: none;
+    }
+    
+    .home-postSide{
+        width: 100%;
+        
+    }
+
+    .home-navbar{
+        position: fixed;
+        left: 10%;
+        bottom: 1%;
+        z-index: 100;
+    }
+} 

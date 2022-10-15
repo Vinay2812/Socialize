@@ -105,7 +105,7 @@ const Post = ({data}) => {
         setLikes(data.likes.length);
         getPostUser();
 
-     }, [data, user, posts]);
+     }, [data]);
 
     const handleLike = ()=>{
         setLiked(!liked);

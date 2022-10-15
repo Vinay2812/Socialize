@@ -20,7 +20,7 @@
     font-size: 1.25rem;
     font-weight: 600;
     color: var(--blue);
-    border-bottom: 2px solid var(--blue);
+    border-bottom: 0.125rem solid var(--blue);
 }
 .infoHead > span:hover{
     transition: ease-in 200ms;
@@ -91,7 +91,7 @@
     height: 2rem;
     align-self: center;
     justify-self:center;
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: 600;
 }
 

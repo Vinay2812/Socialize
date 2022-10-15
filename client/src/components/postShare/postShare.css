@@ -5,8 +5,8 @@
     gap: 1rem;
     padding: 1rem;
     border-radius: 2rem;
-    -webkit-box-shadow: 0px 0px 15px 6px #000000; 
-    box-shadow: 0px 0px 15px 6px #000000;
+    -webkit-box-shadow: 0 0 0.9rem 0.35rem #000000; 
+    box-shadow: 0px 0px 1rem 0.35rem #000000;
     background-color: var(--black);
     min-height: 20rem;
 }
@@ -24,9 +24,9 @@
 }
 .postShare>div>textarea{
     background-color: var(--white);
-    border-radius: 20px;
+    border-radius: 2.25rem;
     padding: 0.5rem 1rem;
-    font-size: 15px;
+    font-size: 0.95rem;
     border: none;
     outline: none;
     resize: none;
@@ -118,8 +118,8 @@
 
 
 .ps-button{
-    padding: 5px 25px;
-    font-size: 15px;
+    padding: 0.3125rem 1.5625rem;
+    font-size: 0.95rem;
     font-weight: 600;
     justify-self: center;
     height: 2rem;
@@ -150,8 +150,8 @@
 
 .shareContainer{
     position: relative;
-    border: 2px dashed var(--lightGray);
-    border-radius: 30px;
+    border: 0.125rem dashed var(--lightGray);
+    border-radius: 2rem;
     flex: 1;
 }
 
@@ -164,7 +164,7 @@
     padding: 1rem 0;
     color: var(--blue);
     font-weight: 500;
-    border-bottom: 2px dashed var(--lightGray);
+    border-bottom: 0.125rem dashed var(--lightGray);
 }
 
 
@@ -190,20 +190,20 @@
     background-color: transparent;
     color: var(--blue);
     border: 2px solid var(--blue);
-    padding: 8px 15px;
-    font-size: 15px;
+    padding: 0.5rem 1rem;
+    font-size: 0.95rem;
     font-weight: 500;
     justify-self: center;
-    border-radius: 25px;
+    border-radius: 1.57rem;
 }
 
 .cancel-btn:hover{
     /* font-size: 16px; */
     color: var(--lightblue);
-    border:3px solid var(--lightblue);
+    border:0.19rem solid var(--lightblue);
     font-weight: 600;
     transition: 400ms ease-in;
-    padding: 7px 13px;
+    padding: 0.44rem 0.82rem;
 }
 
 

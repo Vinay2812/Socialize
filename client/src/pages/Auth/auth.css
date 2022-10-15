@@ -6,7 +6,7 @@
     align-items: center;
     justify-content: center;
     background-color: #080710;
-    font-size: 18px;
+    font-size: 1.125rem;
 }
 
 .container input{
@@ -21,11 +21,11 @@
     align-items: center;
     padding: 0 1rem;
     background-color: transparent;
-    border: 2px solid var(--gray);
+    border: 0.125rem solid var(--gray);
 }
 
 .container input:focus, .container input:hover{
-    border: 2px solid var(--lightblue);
+    border: 0.125rem solid var(--lightblue);
     transition: 200ms ease-in;
 }
 
@@ -40,10 +40,10 @@
     transform: translate(-50%,-50%);
     top: 50%;
     left: 50%;
-    border-radius: 10px;
-    backdrop-filter: blur(12px);
-    border: 2px solid rgba(255,255,255,0.1);
-    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    border-radius: 0.625rem;
+    backdrop-filter: blur(0.75rem);
+    border: 0.125px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 2.5rem rgba(8,7,16,0.6);
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -58,7 +58,7 @@
     font-size: 1.5rem;
     font-weight: 700;
     padding-bottom: 1rem;
-    border-bottom: 2px solid var(--gray);
+    border-bottom: 0.125rem solid var(--gray);
     color:var(--darkblue);
 }
 .names, .passwords, .username-mobile{
@@ -78,7 +78,7 @@
     text-decoration: none;
     color: var(--darkblue);
     font-weight: 600;
-    border-bottom: 2px solid var(--darkblue);
+    border-bottom: 0.125rem solid var(--darkblue);
 }
 .bottom > span:hover{
     color: var(--lightblue);
