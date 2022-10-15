@@ -4,7 +4,9 @@ export const updateUser = (id, formData) => {
     return async(dispatch)=>{
         dispatch({type: "UPDATING_START"});
         try {
-            const {data} = await UserApi.updateUser(id, formData)
+            console.log(formData);
+            const {data} = await UserApi.updateUser(id, formData);
+            
             dispatch({type: "UPDATING_SUCCESS", data: data});
         } catch (err) {
             dispatch({type: "UPDATING_FAIL"});

@@ -45,6 +45,7 @@ const InfoCard = () => {
     }
     const handleSubmit = () => {
         setEdit(false);
+        // console.log(formData);
         dispatch(updateUser(user._id, formData));
         toast.success("Profile updated successfully", toastParameters);
     }

@@ -68,6 +68,7 @@ const ProfileCard = ({location}) => {
         const imageRef = ref(storage, `images/${filename}`);
             uploadBytes(imageRef, img).then(()=>{
                 getDownloadURL(imageRef).then((url)=>{
+                    console.log(url);
                     if(target === "profileImage"){
                         if(userData.profilePicture.name !== process.env.REACT_APP_DEFAULT_PROFILE){
                             fileRef = ref(storage, `/images/${userData.profilePicture.name}`);

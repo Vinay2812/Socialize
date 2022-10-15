@@ -7,9 +7,9 @@ const { getUser, updateUser, deleteUser, followUser, unfollowUser, getAllUser } 
 
 router.get("/:id", getUser);
 router.get("/", getAllUser);
-router.patch("/:id", authMiddleWare, updateUser);
-router.delete("/:id", authMiddleWare, deleteUser);
-router.put("/:id/follow", authMiddleWare, followUser);
-router.put("/:id/unfollow", authMiddleWare, unfollowUser);
+router.patch("/:id", updateUser);
+router.delete("/:id", deleteUser);
+router.put("/:id/follow", followUser);
+router.put("/:id/unfollow", unfollowUser);
 
 module.exports = router

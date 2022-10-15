@@ -84,6 +84,7 @@ function Dropdown ({setDropDownSelected, postData, userId}){
 }
 const Post = ({data}) => {
     const {user} = useSelector((state)=>state.authReducer.authData);
+    const {posts} = useSelector((state)=>state.postReducer);
     const [dropDownSelected, setDropDownSelected] = useState(false);
 
     const [comment, setComment] = useState(false);
@@ -91,20 +92,20 @@ const Post = ({data}) => {
     const [likes, setLikes] = useState(data.likes.length);
 
     const [postUser, setPostUser] = useState({});
-    const [profileImage, setProfileImage] = useState(null);
+    const [profileImage, setProfileImage] = useState("");
 
     
      useEffect(() => {
-        getUser(data.userId)
-        .then((response)=>{
-          setPostUser(response.data);
-          setProfileImage(response.data.profilePicture.url);
-        });
-
+        const getPostUser = async()=>{
+            const userData = await getUser(data.userId);
+            setPostUser(userData.data);
+            setProfileImage(userData.data.profilePicture.url);
+        }
         setLiked(data.likes.includes(user._id)?true:false);
         setLikes(data.likes.length);
+        getPostUser();
 
-     }, [data, user]);
+     }, [data, user, posts]);
 
     const handleLike = ()=>{
         setLiked(!liked);
