@@ -198,23 +198,27 @@ const PostShare = ({setPostShare}) => {
                     reset();
                 }}/>
                 <div className="postShare-left">
-                    <div className="postShare-option"
+                    <div className="postShare-option active"
                         onClick={()=>imageRef.current.click()}
                     >
+                        <div className='sphere'></div>
                         <AddPhotoAlternateOutlined />
                         <span>Add Image</span>
                     </div>
-                    <div className="postShare-option"
+                    <div className="postShare-option active"
                         onClick={()=>videoRef.current.click()}
                     >
+                        <div className="sphere"></div>
                         <PlayCircleOutline/>
                         <span>Add Video</span>
                     </div>
-                    <div className="postShare-option">
+                    <div className="postShare-option active">
+                        <div className="sphere"></div>
                         <Bookmarks />
                         <span>Tag people</span>
                     </div>
-                    <div className="postShare-option">
+                    <div className="postShare-option active">
+                        <div className="sphere"></div>
                         <AddLocationOutlined />
                         <span>Add Location</span>
                     </div>

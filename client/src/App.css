@@ -29,9 +29,8 @@
   border-radius: 1rem;
   padding: 4px;
   border: none;
-  background-color: var(--blue);
+  background: linear-gradient(to right, var(--blue), rgb(8, 117, 220));
   cursor: pointer;
-  transition: all 100ms ease-out;
   color: var(--lightwhite);
   height: 2.5rem;
   width: 6rem;
@@ -39,7 +38,7 @@
 }
 
 .button:hover{
-  background-color: transparent;
+  background: transparent;
   transition: 200ms ease-in;
   color: var(--darkblue);
   border: 2px solid var(--darkblue);
@@ -47,5 +46,39 @@
 
 ::-webkit-scrollbar{
   display: none;
+}
+
+.active > .sphere {
+  position: absolute;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  /* margin: 10px 10px 0px 175px; */
+  background: 
+    radial-gradient(
+      var(--lightblue),
+      var(--lightBlack)
+    );
+  background-size: 200% 200%;
+  animation: turn 3s ease-out 0s infinite;
+  z-index: -1;
+  top: -0.25rem;
+}
+.active span{
+  color: var(--blue);
+  font-weight: 600;
+  font-size: 12px !important;
+}
+.active:hover{
+  color: var(--white) !important;
+}
+
+@keyframes turn {
+  0%, 100% {
+    background-position: 20% 90%;
+  }
+  50% {
+    background-position:90% 20%;
+  }
 }
 

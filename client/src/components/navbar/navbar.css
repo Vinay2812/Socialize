@@ -72,36 +72,45 @@
 
 .rightNavIcons{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items:flex-start;
-    padding: 0.5rem 2rem 0.5rem 1rem;
+    padding: 0.5rem 0;
     -webkit-box-shadow: 0px 0px 15px 6px #000000; 
     box-shadow: 0px 0px 15px 6px #000000;
     border-radius: 20px;
-    width: calc(100% - 11.5rem);
+    width: calc(100% - 8.5rem);
     margin-top: 1rem;
-    gap: 1rem;
 }
+
+
 
 .navIcons, .navIcons>a{
     display: flex;
+    position: relative;
+    flex: 1;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 0.2rem;
 }
 
+
+.active span{
+    padding-top: 5px;
+}
+
 .navIcons span{
     font-size: 10px;
 }
 .navIcons>svg, .navIcons>a>svg{
-    font-size: 1.7rem;
+    font-size: 1.6rem;
 }
 .navIcons>a>img{
     object-fit: cover;
     aspect-ratio: 1;
     width: 1.7rem;
     border-radius: 50%;
+    box-shadow: 0 0 0 1px var(--white);
 }
 
 
