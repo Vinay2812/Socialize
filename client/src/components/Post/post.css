@@ -52,8 +52,8 @@
 .postTop > .postTime{
     position: relative;
     color: var(--lightGray);
-    font-size: 0.65rem;
-    top: 0.2rem;
+    font-size: 0.7rem;
+    top: 0.3rem;
     right: 0.3rem;
     
 }
@@ -136,7 +136,7 @@
     flex-direction: column;
     gap: 0.5rem;
     border-radius: 1.8rem;
-    z-index: 100;
+    z-index: 1;
     right: -5rem;
     top:2rem;
     padding: 1rem;

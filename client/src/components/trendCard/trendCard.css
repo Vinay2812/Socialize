@@ -46,6 +46,10 @@
     color: var(--lightGray)    
 }
 
+@media screen and (max-width: 849px){
+    
+}
+
 
 
 

@@ -24,7 +24,7 @@
 }
 .postShare>div>textarea{
     background-color: var(--white);
-    border-radius: 2.25rem;
+    border-radius: 1rem;
     padding: 0.5rem 1rem;
     font-size: 0.95rem;
     border: none;
@@ -53,9 +53,10 @@
     justify-content: center;
     font-weight: 500;
     flex: 1;
-    gap: 0.2rem;
-    position: relative;
+    gap: 0.5rem;
+    position: relative !important;
     z-index: 1;
+    color: var(--white);    
 }
 .postShare-option > svg{
     font-size: 1.8rem;
@@ -67,13 +68,12 @@
 .postShare-option > .sphere{
     position: absolute;
     z-index: -2;
-    top: 0.6rem;
+    top: calc(50% - 1.85rem);
     height: 2.5rem;
     width:2.5rem;
+    border-radius: 50%;
 }
-.postShare-option{
-    color: var(--white);
-}
+
 .postShare-option:nth-of-type(1) > .sphere{
     background: 
     radial-gradient(
@@ -122,7 +122,7 @@
     font-size: 0.95rem;
     font-weight: 600;
     justify-self: center;
-    height: 2rem;
+    height: 1.75rem;
     width: 5rem;
 }
 
@@ -151,7 +151,7 @@
 .shareContainer{
     position: relative;
     border: 0.125rem dashed var(--lightGray);
-    border-radius: 2rem;
+    border-radius: 1rem;
     flex: 1;
 }
 
@@ -160,11 +160,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.3rem;
-    padding: 1rem 0;
+    font-size: 1.2rem;
+    padding: 1rem;
     color: var(--blue);
     font-weight: 500;
     border-bottom: 0.125rem dashed var(--lightGray);
+    height: 15%;
 }
 
 
@@ -174,36 +175,30 @@
     justify-content: center;
     gap: 1.5rem;
     align-items: center;
+    height: 35%;
 }
 
 .shareContainer > .shareOptions > .shareOption{
     display: flex;
-    gap: 0.2rem;
-    font-size: 1.15rem;
+    gap: 0.25rem;
+    font-size: 1.1rem;
 }
 .shareContainer > .shareOptions > .shareOption > input{
     width: 1rem;
     aspect-ratio: 1;
 }
 
-.cancel-btn{
-    background-color: transparent;
-    color: var(--blue);
-    border: 2px solid var(--blue);
-    padding: 0.5rem 1rem;
-    font-size: 0.95rem;
-    font-weight: 500;
-    justify-self: center;
-    border-radius: 1.57rem;
-}
 
-.cancel-btn:hover{
-    /* font-size: 16px; */
-    color: var(--lightblue);
-    border:0.19rem solid var(--lightblue);
-    font-weight: 600;
-    transition: 400ms ease-in;
-    padding: 0.44rem 0.82rem;
+@media screen and (max-width: 849px){
+    .postShare{
+        width: calc(100% - 1rem);
+        grid-template-columns: 20% 75%;
+        min-height: 20rem;
+        margin-left: -0.75rem;
+    }
+    .postShare > svg{
+        top: 0.6rem;
+        right: 0.2rem;
+    }
 }
-
 

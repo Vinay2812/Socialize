@@ -20,7 +20,7 @@ import Loader from '../loader/Loader'
 import { useParams } from 'react-router-dom'
 
 
-const ShareOptions = ({handleSubmit, setIsPublicPost, reset})=>{
+const ShareOptions = ({handleSubmit, setIsPublicPost})=>{
     return (
         <div className='shareContainer'>
             <div className='shareHeader'>
@@ -198,26 +198,26 @@ const PostShare = ({setPostShare}) => {
                     reset();
                 }}/>
                 <div className="postShare-left">
-                    <div className="postShare-option active"
+                    <div className="postShare-option"
                         onClick={()=>imageRef.current.click()}
                     >
                         <div className='sphere'></div>
                         <AddPhotoAlternateOutlined />
                         <span>Add Image</span>
                     </div>
-                    <div className="postShare-option active"
+                    <div className="postShare-option"
                         onClick={()=>videoRef.current.click()}
                     >
                         <div className="sphere"></div>
                         <PlayCircleOutline/>
                         <span>Add Video</span>
                     </div>
-                    <div className="postShare-option active">
+                    <div className="postShare-option ">
                         <div className="sphere"></div>
                         <Bookmarks />
                         <span>Tag people</span>
                     </div>
-                    <div className="postShare-option active">
+                    <div className="postShare-option">
                         <div className="sphere"></div>
                         <AddLocationOutlined />
                         <span>Add Location</span>

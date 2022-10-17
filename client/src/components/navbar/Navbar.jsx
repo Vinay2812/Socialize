@@ -1,4 +1,4 @@
-import { AddBox, ChatOutlined, ExitToApp, GroupOutlined, HomeOutlined, NotificationsNoneOutlined, Search, TrendingUp } from "@material-ui/icons"
+import { AddBox, CancelOutlined, ChatOutlined, ExitToApp, GroupOutlined, HomeOutlined, MenuOutlined, NotificationsNoneOutlined, Search, TrendingUp } from "@material-ui/icons"
 import { useDispatch, useSelector } from "react-redux"
 import { Link, useParams } from "react-router-dom"
 import "./navbar.css"
@@ -6,22 +6,63 @@ import Logo from "./Logo/socialize-logo-white.png"
 import { logout } from "../../actions/AuthAction"
 import PostShare from "../postShare/PostShare"
 import { useState } from "react"
+import RightSide from "../rightSide/RightSide"
 
-const Navbar = () => {
+const RightNavbarIcons = ()=>{
   const dispatch = useDispatch();
+  const handleLogout = ()=>{
+    dispatch(logout());
+  }
+  const [rightActive, setRightActive] = useState("trendings");
+  return (
+    <div className="rightNavIcons">
+          
+      <div className={rightActive === "trendings" ?"navIcons active" : "navIcons"} onClick={()=>setRightActive("trendings")}>
+        <div className = 'sphere'></div>
+        <TrendingUp />
+        <span>Trendings</span>
+      </div>
+      <div className={rightActive === "notifications" ?"navIcons active" : "navIcons"} onClick={()=>setRightActive("notifications")}>
+        <div className = 'sphere'></div>
+        <NotificationsNoneOutlined />
+        <span>Notifications</span>
+      </div>
+      <div className="navIcons" onClick={handleLogout}>
+        <div className = 'sphere'></div>
+        <ExitToApp />
+        <span>Logout</span>
+      </div>
+      
+    </div>
+  )
+}
+const Navbar = () => {
+  
   const [postShare, setPostShare] = useState(false);
   const {profilePicture, _id} = useSelector((state)=>state.authReducer.authData.user);
-  const handleLogout = ()=>{
-      dispatch(logout());
-  }
+  
 
   const params = useParams();
 
   const [centerActive, setCenterActive] = useState(params.id?"profile":"home");
-  const [rightActive, setRightActive] = useState("trendings");
+  
+  const [menu, setMenu] = useState(false);
 
   return (
     <>
+      {
+        menu ? 
+        <div className="menu-bar">
+          <CancelOutlined onClick={()=>{
+            setMenu(false);
+          }}/>
+          <div className="menu-rightNavIcons">
+            <RightNavbarIcons />
+          </div>
+          <RightSide />
+        </div>
+        : ""
+      }
      <div className="navbar">  
         <div className="navItemContainer">
           <div className="logoSearch" >
@@ -34,6 +75,9 @@ const Navbar = () => {
                     <Search className='icon'/>
                 </div>
             </div>
+          </div>
+          <div className="menu" onClick={()=>setMenu(true)}>
+              <MenuOutlined />
           </div>
         </div>
         <div className="navItemContainer">
@@ -73,25 +117,7 @@ const Navbar = () => {
           </div>
         </div>
         <div className="navItemContainer">
-          <div className="rightNavIcons">
-          
-            <div className={rightActive === "trendings" ?"navIcons active" : "navIcons"} onClick={()=>setRightActive("trendings")}>
-              <div className = 'sphere'></div>
-              <TrendingUp />
-              <span>Trendings</span>
-            </div>
-            <div className={rightActive === "notifications" ?"navIcons active" : "navIcons"} onClick={()=>setRightActive("notifications")}>
-              <div className = 'sphere'></div>
-              <NotificationsNoneOutlined />
-              <span>Notifications</span>
-            </div>
-            <div className="navIcons" onClick={handleLogout}>
-              <div className = 'sphere'></div>
-              <ExitToApp />
-              <span>Logout</span>
-            </div>
-            
-          </div>
+          <RightNavbarIcons />
         </div>   
       </div>
         {
@@ -105,6 +131,7 @@ const Navbar = () => {
         : ""
         } 
     </>
+        
   )
 }
 

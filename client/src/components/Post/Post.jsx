@@ -84,15 +84,15 @@ function Dropdown ({setDropDownSelected, postData, userId}){
 }
 const Post = ({data}) => {
     const {user} = useSelector((state)=>state.authReducer.authData);
-    const {posts} = useSelector((state)=>state.postReducer);
+
     const [dropDownSelected, setDropDownSelected] = useState(false);
 
     const [comment, setComment] = useState(false);
     const [liked, setLiked] = useState(data.likes.includes(user._id)?true:false);
     const [likes, setLikes] = useState(data.likes.length);
 
-    const [postUser, setPostUser] = useState({});
-    const [profileImage, setProfileImage] = useState("");
+    const [postUser, setPostUser] = useState(data.userId === user._id?user:{});
+    const [profileImage, setProfileImage] = useState(data.userId === user._id?user.profilePicture.url:"");
 
     
      useEffect(() => {
@@ -105,7 +105,7 @@ const Post = ({data}) => {
         setLikes(data.likes.length);
         getPostUser();
 
-     }, [data]);
+     }, [data, user]);
 
     const handleLike = ()=>{
         setLiked(!liked);
@@ -145,7 +145,7 @@ const Post = ({data}) => {
          {dropDownSelected && <Dropdown setDropDownSelected={setDropDownSelected} postData={data} userId = {user._id}/>}
         <div className="postTop">
             {/* <img src={process.env.REACT_APP_PUBLIC_FOLDER_IMAGES + postUser.profilePicture} alt=""/> */}
-            <img src={profileImage} alt=""/>
+            <img src={profileImage} alt="Loading..."/>
             <Link to={`/profile/${data.userId}`}>
                 <span className='name'>
                     {postUser.firstname} {postUser.lastname}
