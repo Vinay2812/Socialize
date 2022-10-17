@@ -134,7 +134,7 @@
 
 @media screen and (max-width: 700px){
     .profileCard{
-        width: calc(100% - 1.25rem);
-        margin-left: 0;
+        width: calc(100% - 1rem) !important;
+        margin-left: 0.5rem;
     }
 }

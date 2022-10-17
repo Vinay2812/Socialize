@@ -75,8 +75,8 @@
     }
 
     .profile-profileCard{
-        /* margin-left: 1rem; */
         width: 100%;
+        padding: 0;
     }
     .profile-infocard{
         display: contents;
