@@ -195,16 +195,15 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: var(--lightBlack);
         z-index: 11;
     }
     .centerNavIcons{
         position: absolute;
-        width: calc(100% - 2rem);
+        width: calc(100% - 1rem);
         right: 1rem;
         left: 0;
         margin-bottom: 1rem;
-       
+        background-color: var(--lightBlack);
     }
     .navItemContainer:nth-of-type(3){
         display: none;
