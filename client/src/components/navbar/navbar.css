@@ -64,7 +64,7 @@
     -webkit-box-shadow: 0 0 0.9rem 0.35rem #000000; 
     box-shadow: 0px 0px 1rem 0.35rem #000000;
     border-radius: 2rem;
-    width: calc(100% - 3rem);
+    width: calc(100% - 3.85rem);
     margin-top: 1rem;
     margin-left: 1rem;
     
@@ -80,7 +80,7 @@
     border-radius: 1.25rem;
     width: calc(100% - 8rem);
     margin-top: 1rem;
-    margin-left: 0.2rem;
+    margin-left: 1rem;
 }
 
 
@@ -98,11 +98,11 @@
 
 .active span{
     padding-top: 0.3rem;
-    /* font-size: 0.75rem; */
+    font-size: 0.75rem !important;
 }
 
 .navIcons span{
-    font-size: 0.75rem;
+    font-size: 0.7rem;
 }
 .navIcons>svg, .navIcons>a>svg{
     font-size: 1.6rem;
@@ -152,16 +152,22 @@
     display: none;
 }
 
-@media screen and (max-width: 1024px) and (min-width: 850px){
+@media screen and (max-width: 1024px) and (min-width: 700px){
     .navbar{
         grid-template-columns: 60% 40%;
     }
     .navItemContainer:nth-of-type(1){
         display: none;
     }
+    .centerNavIcons{
+        width: calc(100% - 2rem);
+    }
+    .rightNavIcons{
+        width: calc(100% - 7rem);
+    }
 }
 
-@media screen and (max-width: 849px){
+@media screen and (max-width: 700px){
     .navbar{
         grid-template-columns: 100%;
         width: 100%;
@@ -183,14 +189,21 @@
     }
     .navItemContainer:nth-of-type(2){
         width: 100%;
+        height: 4rem;
         position: absolute;
-        bottom: 0;
-        z-index: 10;
+        bottom: 0rem;
+        margin-bottom: 1rem;
         display: flex;
-        padding: 0.5rem 0;
-        left: -2%;
+        align-items: center;
+        justify-content: center;
         background-color: var(--lightBlack);
-
+    }
+    .centerNavIcons{
+        position: absolute;
+        width: calc(100% - 2rem);
+        right: 1rem;
+        left: 0;
+       
     }
     .navItemContainer:nth-of-type(3){
         display: none;

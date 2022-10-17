@@ -1,3 +1,7 @@
+*{
+    margin: 0;
+    padding: 0;
+}
 .profile{
     position: relative;
     display: grid;
@@ -17,3 +21,66 @@
     width: 100%;
     gap: 1rem;
 }
+
+.profile-profileCard{
+    width: calc(100% - 1rem);
+    padding-left: 1.75rem;
+}
+
+.profile-mobile-navbar, .profile-infocard{
+    display: none;
+}
+
+
+@media screen and (max-width: 1024px) and (min-width: 700px){
+    .profile{
+        grid-template-columns: 60% 37.5%;
+    }
+    .profile-left{
+        display: none;
+    }
+    .profile-infocard{
+        display: contents;
+    }
+
+}
+
+@media screen and (max-width: 700px){
+    
+    .profile-navbar{
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: transparent;
+    }
+    .profile{
+        grid-template-columns: 100%; 
+        justify-content: center;
+    }
+    .profile-left{
+        display: none;
+    }
+    .profile-profileSide{
+        display: none;
+    }
+    .profile-rightSide{
+        display: none;
+    }
+  
+    .profileCenter{
+        width: 100%;
+        margin-top: 3rem;
+    }
+
+    .profile-profileCard{
+        /* margin-left: 1rem; */
+        width: 100%;
+    }
+    .profile-infocard{
+        display: contents;
+        width: 100%;
+    }
+
+} 

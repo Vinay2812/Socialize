@@ -101,3 +101,16 @@
     height: 2rem;
 
 }
+
+@media screen and (max-width: 1024px) and (min-width: 700px){
+    .infoCard{
+        width: calc(100% - 7rem);
+        margin-left:0.5rem;
+    }
+}
+
+@media screen and (max-width: 700px){
+    .infoCard{
+        width: calc(100% - 5rem);
+    }
+}

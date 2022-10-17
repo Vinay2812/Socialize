@@ -109,7 +109,7 @@
     font-size: 0.82rem;
 }
 .vl{
-    height: 150%;
+    height: 3rem;
     border-left: 0.125rem solid var(--gray);
 }
 
@@ -125,4 +125,16 @@
     color: var(--lightblue);
 }
 
+@media screen and (max-width: 1024px) and (min-width: 700px){
+    .profileCard{
+        width: calc(100% - 1.5rem);
+        margin-left: 0.5rem;
+    }
+}
 
+@media screen and (max-width: 700px){
+    .profileCard{
+        width: calc(100% - 1.25rem);
+        margin-left: 0;
+    }
+}

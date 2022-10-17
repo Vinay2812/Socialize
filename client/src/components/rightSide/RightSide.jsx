@@ -11,7 +11,7 @@ const RightSide = () => {
       <TrendCard />
 
       <button className='button r-button'>
-          Settings
+          Update Password
       </button>
     </div>
   )

@@ -3,12 +3,12 @@
         font-size: calc(4px + (35 - 20) * (100vw - 320px) / (1920 - 320));
     }
 }
-@media screen and (max-width: 1023px) and (min-width: 850px){
+@media screen and (max-width: 1023px) and (min-width: 700px){
     html{
         font-size: calc(9px + (35 - 20) * (100vw - 320px) / (1920 - 320));
     }
 }
-@media screen and (max-width: 849px) {
+@media screen and (max-width: 700px) {
     html{
         font-size: calc(11px + (35 - 20) * (100vw - 320px) / (1920 - 320));
     }
