@@ -15,7 +15,7 @@ const handleFormValidation = (data)=>{
     let error = false;
     const onlyChar = /^[A-Za-z]*$/
     const usernameValidity = /^[A-Za-z_]/
-    // const passwordValidity = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$/
+    const passwordValidity = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$/
     const emailValidity = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/
     
     if(!onlyChar.test(data.firstname)){
@@ -30,15 +30,15 @@ const handleFormValidation = (data)=>{
       toast.error("username must start with letter or _", toastParameters);
       error = true;
     }
-    if(data.firstname.length <= 3){
+    if(data.firstname.length < 3){
       toast.error("firstname must have atleast 3 characters", toastParameters);
       error = true;
     }
-    if(data.lastname.length <= 3){
+    if(data.lastname.length < 3){
       toast.error("lastname must have atleast 3 characters", toastParameters);
       error = true;
     }
-    if(data.username.length <= 3){
+    if(data.username.length < 3){
       toast.error("username must have atleast 3 characters", toastParameters);
       error = true;
     }
@@ -46,10 +46,10 @@ const handleFormValidation = (data)=>{
       toast.error("please enter valid email", toastParameters);
       error = true;
     }
-    // if(!passwordValidity.test(data.password)){
-    //   toast.error("password must be combination of digit, lowercase, uppercase and special character", toastParameters);
-    //   error = true;
-    // }
+    if(!passwordValidity.test(data.password)){
+      toast.error("Password is weak, use combination of characters", toastParameters);
+      error = true;
+    }
     if(data.password !== data.confirmpass){
       toast.error("password and confirm password doesn't match", toastParameters);
       error = true;

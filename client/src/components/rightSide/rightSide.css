@@ -23,6 +23,56 @@
     padding: 0.2rem 1rem;
 }
 
+
+.updateForm{
+    width: 25rem;
+    position: absolute;
+    display: flex;
+    top: 10rem;
+    left: calc(50% - 12.5rem);
+    padding: 2rem 2.5rem 1rem 2.5rem;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    z-index: 12;
+    background-color: #080710;
+    font-size: 1.125rem;
+    overflow-y: hidden;
+    border-radius: 1rem;
+    
+}
+
+.updateForm > svg{
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    cursor: pointer;
+    color: rgba(255, 0, 0, 0.851);
+}
+.updateForm > svg:hover{
+    color: var(--lightblue);
+}
+.updateForm > input{
+    color: var(--white);
+    padding: 0.75rem 1rem;
+    border-radius: 1rem;
+    width: 100%;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    border: 0.125rem solid var(--gray);
+}
+.updateForm > input:focus, .updateForm > input:hover{
+    border: 0.125rem solid var(--lightblue);
+    transition: 200ms ease-in;
+}
+
+.u-btn{
+    height: 2rem;
+    width: 5rem;
+}
+
 @media screen and (max-width: 700px){
     .rightSide{
         width: 80%;
