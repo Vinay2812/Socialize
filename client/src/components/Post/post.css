@@ -196,3 +196,9 @@
     color: var(--lightblue);
     transition: 200ms ease-in;
 }
+
+@media screen and (max-width: 849px){
+    .postOperationsOptions{
+        right: 0;
+    }
+}

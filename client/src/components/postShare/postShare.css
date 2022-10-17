@@ -191,10 +191,12 @@
 
 @media screen and (max-width: 849px){
     .postShare{
-        width: calc(100% - 1rem);
-        grid-template-columns: 20% 75%;
+        position: relative;
+        width: 95%;
+        grid-template-columns: 20% 70%;
         min-height: 20rem;
-        margin-left: -0.75rem;
+        right: 2.5%;
+        top: 10%;
     }
     .postShare > svg{
         top: 0.6rem;
