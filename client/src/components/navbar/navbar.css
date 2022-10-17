@@ -216,7 +216,7 @@
         left: -1rem;
         margin-bottom: 1rem;
         background-color: var(--lightBlack);
-        
+        z-index: 2;
     }
     .navItemContainer:nth-of-type(3){
         display: none;
