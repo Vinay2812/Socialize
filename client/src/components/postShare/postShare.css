@@ -35,7 +35,7 @@
 }
 .postShare > svg{
     position: absolute;
-    right: 0.8rem;
+    right: 2rem;
     top: 1rem;
     color: rgb(225, 32, 32);
 }
@@ -60,6 +60,7 @@
 }
 .postShare-option > svg{
     font-size: 1.8rem;
+    z-index: 5;
 }
 .postShare-option > span{
     font-size: 0.7rem;
@@ -171,7 +172,7 @@
 
 .shareContainer > .shareOptions{
     display: flex;
-    padding: 1rem 0;
+    padding: 1rem;
     justify-content: center;
     gap: 1.5rem;
     align-items: center;
@@ -182,9 +183,10 @@
     display: flex;
     gap: 0.25rem;
     font-size: 1.1rem;
+    text-align: center;
 }
 .shareContainer > .shareOptions > .shareOption > input{
-    width: 1rem;
+    width: 0.9rem;
     aspect-ratio: 1;
 }
 

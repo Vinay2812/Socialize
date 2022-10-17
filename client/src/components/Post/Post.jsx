@@ -90,9 +90,13 @@ const Post = ({data}) => {
     const [comment, setComment] = useState(false);
     const [liked, setLiked] = useState(data.likes.includes(user._id)?true:false);
     const [likes, setLikes] = useState(data.likes.length);
-
-    const [postUser, setPostUser] = useState(data.userId === user._id?user:{});
-    const [profileImage, setProfileImage] = useState(data.userId === user._id?user.profilePicture.url:"");
+    const default_user = {
+        firstname: "loading..",
+        lastname: "loading..",
+        username: "loading.."
+    }
+    const [postUser, setPostUser] = useState(data.userId === user._id?user:default_user);
+    const [profileImage, setProfileImage] = useState(data.userId === user._id?user.profilePicture.url:"https://firebasestorage.googleapis.com/v0/b/socialize-development.appspot.com/o/images%2F1665421366423default_profile.png?alt=media&token=cfe908d9-c0f3-47db-84f1-379a18f2f1a1");
 
     
      useEffect(() => {

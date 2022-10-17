@@ -207,7 +207,6 @@ const getTimeLinePosts = async(req, res) =>{
                 }   
             )
         )
-
         res.status(200).json(
             allUniquePosts
             .sort((a, b)=>{

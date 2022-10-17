@@ -73,10 +73,10 @@
   font-size: 0.625rem !important;
 }
 .sphere{
-  z-index: 4 !important;
+  z-index: 2 !important;
 }
-.active > a > svg,.active > svg{
-  z-index: 5 !important;
+.navIcons > a > svg,.navIcons > svg, .navIcons > a >img{
+  z-index: 3 !important;
 }
 .active:hover{
   color: var(--white) !important;

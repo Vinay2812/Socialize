@@ -68,7 +68,7 @@ const PostShare = ({setPostShare}) => {
     const descRef = useRef();
     const dispatch = useDispatch();
 
-    const [isPublicPost, setIsPublicPost] = useState(true);
+    const [isPublicPost, setIsPublicPost] = useState(false);
 
     const reset = () =>{
         setPostShare(false);

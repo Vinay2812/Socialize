@@ -10,6 +10,7 @@ import { useEffect } from 'react'
 
 import {useDispatch, useSelector} from "react-redux"
 import { followUser, unfollowUser } from '../../actions/UserAction'
+import { getTimeLinePosts } from '../../actions/PostAction'
 
 const Follower = ({other_user})=>{
     const {user} = useSelector((state)=>state.authReducer.authData);
@@ -18,10 +19,14 @@ const Follower = ({other_user})=>{
     const dispatch = useDispatch();
     const handleFollow = ()=>{
         if(isFollowing){
-            dispatch(unfollowUser(other_user._id, user));
+            dispatch(unfollowUser(other_user._id, user)).then(()=>{
+                dispatch(getTimeLinePosts(user._id));
+            });
         }
         else{
-            dispatch(followUser(other_user._id, user));
+            dispatch(followUser(other_user._id, user)).then(()=>{
+                dispatch(getTimeLinePosts(user._id));
+            });
         }
         
         setIsFollowing(!isFollowing);

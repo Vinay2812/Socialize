@@ -15,7 +15,7 @@
     display: none;
 }
 
-@media screen and (max-width: 1024px) and (min-width: 850px){
+@media screen and (max-width: 1024px) and (min-width: 700px){
     .home{
         grid-template-columns: 60% 37.5%;
     }
@@ -24,7 +24,7 @@
     }
 }
 
-@media screen and (max-width: 850px){
+@media screen and (max-width: 700px){
     .home{
         grid-template-columns: 100%; 
         justify-content: center;
