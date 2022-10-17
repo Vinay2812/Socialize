@@ -170,7 +170,7 @@
     }
     .navItemContainer:nth-of-type(1){
         position: fixed;
-        width: 100%;
+        width: 105%;
         top: 0;
         padding: 0.5rem 0;
         z-index: 10;
@@ -179,6 +179,7 @@
         grid-template-columns: 90% 10%;
         justify-content: center;
         align-items: center;
+        margin-left: -5%;
     }
     .navItemContainer:nth-of-type(2){
         width: 100%;
@@ -187,7 +188,6 @@
         z-index: 10;
         display: flex;
         padding: 0.5rem 0;
-        background-color: var(--lightBlack);
         left: -2%;
 
     }
