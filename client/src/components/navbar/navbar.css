@@ -188,6 +188,7 @@
         display: flex;
         padding: 0.5rem 0;
         background-color: var(--lightBlack);
+        left: -2%;
 
     }
     .navItemContainer:nth-of-type(3){
@@ -236,7 +237,7 @@
     }
 
     .new-post{
-        top: 25%;
+        top: 20%;
         left: 1.75rem;
     }
 }
