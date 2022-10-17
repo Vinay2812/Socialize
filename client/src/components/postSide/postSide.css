@@ -11,3 +11,12 @@
     padding-top: 1.5rem;
     
 }
+
+@media screen and (max-width: 849px){
+    .postSide{
+        width: calc(100% - 0.5rem);
+        padding: 0.25rem;
+        padding-top: 1rem;
+        padding-bottom: 3rem;
+    }
+}
