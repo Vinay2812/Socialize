@@ -7,6 +7,7 @@ import { logout } from "../../actions/AuthAction"
 import PostShare from "../postShare/PostShare"
 import { useState } from "react"
 import RightSide from "../rightSide/RightSide"
+import FollowersCard from "../followersCard/FollowersCard"
 
 const RightNavbarIcons = ()=>{
   const dispatch = useDispatch();
@@ -60,6 +61,7 @@ const Navbar = () => {
             <RightNavbarIcons />
           </div>
           <RightSide />
+          
         </div>
         : ""
       }
@@ -75,6 +77,7 @@ const Navbar = () => {
                     <Search className='icon'/>
                 </div>
             </div>
+            
           </div>
           <div className="menu" onClick={()=>setMenu(true)}>
               <MenuOutlined />

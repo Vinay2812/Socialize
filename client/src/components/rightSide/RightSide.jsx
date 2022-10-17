@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { updateUser } from '../../actions/UserAction';
 import Loader from "../loader/Loader"
 import {CancelOutlined} from "@material-ui/icons"
+import FollowersCard from '../followersCard/FollowersCard';
 const bcrypt = require("bcryptjs");
 
 
@@ -72,6 +73,7 @@ const RightSide = () => {
         <button className='button r-button' onClick={()=>setUpdatePassword(true)}>
             Update Password
         </button>
+        <FollowersCard />
         
     </div>
     }

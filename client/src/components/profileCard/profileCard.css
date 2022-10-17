@@ -125,6 +125,26 @@
     color: var(--lightblue);
 }
 
+.follow-btn{
+    color: var(--white);
+}
+
+.follow-btn, .unfollow-btn{
+    width: 80%;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.unfollow-btn{
+    background: transparent;
+    color: var(--lightblue);
+    border: 0.125rem solid var(--blue);
+}
+.unfollow-btn:hover{
+    background: linear-gradient(to right, var(--blue), rgb(8, 117, 220));
+    color: var(--white);
+}
+
 @media screen and (max-width: 1024px) and (min-width: 700px){
     .profileCard{
         width: calc(100% - 1.5rem);

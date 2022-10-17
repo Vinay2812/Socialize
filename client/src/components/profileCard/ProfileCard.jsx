@@ -7,7 +7,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {Link, useParams} from "react-router-dom"
 
 // import { uploadImage } from "../../actions/UploadActions"
-import { updateUser } from '../../actions/UserAction'
+import { followUser, unfollowUser, updateUser } from '../../actions/UserAction'
 
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
@@ -21,6 +21,7 @@ import { useEffect } from 'react';
 import { getUser } from '../../api/UserRequest';
 import Compressor from 'compressorjs';
 import Loader from '../loader/Loader';
+import { getTimeLinePosts } from '../../actions/PostAction';
 
 const ProfileCard = ({location}) => {
     const {user} = useSelector((state)=>state.authReducer.authData);
@@ -136,6 +137,21 @@ const ProfileCard = ({location}) => {
             
         }
     };
+
+    
+    const handleFollow = ()=>{
+        if(user.following.includes(params.id)){
+            dispatch(unfollowUser(params.id, user)).then(()=>{
+                dispatch(getTimeLinePosts(user._id));
+            });
+        }
+        else{
+            dispatch(followUser(params.id, user)).then(()=>{
+                dispatch(getTimeLinePosts(user._id));
+            });
+        }
+    
+    }
     
   return (
      
@@ -214,6 +230,13 @@ const ProfileCard = ({location}) => {
                 )}
             </div>
             <hr />
+            {
+                profilePage && params.id !==user._id ? 
+                <button className={user.following.includes(params.id)?"button unfollow-btn" : "button follow-btn"} onClick={handleFollow}>
+                    {user.following.includes(params.id)?"Following":"Follow"}
+                </button>
+                :""
+            }
         </div>
 
         {profilePage? '' : 
