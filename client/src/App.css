@@ -72,6 +72,12 @@
   font-weight: 600;
   font-size: 0.625rem !important;
 }
+.sphere{
+  z-index: 4 !important;
+}
+.active > a > svg,.active > svg{
+  z-index: 5 !important;
+}
 .active:hover{
   color: var(--white) !important;
 }
