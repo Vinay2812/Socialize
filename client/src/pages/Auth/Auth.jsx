@@ -9,7 +9,7 @@ import { useEffect } from 'react';
 
 import {toast, ToastContainer} from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
-import { toastParameters } from '../../components/toastParameters';
+import { toastParameters } from '../../components/toastParameters'
 
 const handleFormValidation = (data)=>{
     let error = false;
@@ -17,40 +17,53 @@ const handleFormValidation = (data)=>{
     const usernameValidity = /^[A-Za-z_]/
     const passwordValidity = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$/
     const emailValidity = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/
-    
+    const whiteSpace = /\s/g;
+
     if(!onlyChar.test(data.firstname)){
       toast.error("firstname must have only characters", toastParameters);
       error = true;
     }
-    if(!onlyChar.test(data.lastname)){
-      toast.error("lastname must have only characters", toastParameters);
+    else if(whiteSpace.test(data.firstname)){
+      toast.error("firstname can't have spaces", toastParameters);
       error = true;
     }
-    if(!usernameValidity.test(data.username)){
-      toast.error("username must start with letter or _", toastParameters);
-      error = true;
-    }
-    if(data.firstname.length < 3){
+    else if(data.firstname.length < 3){
       toast.error("firstname must have atleast 3 characters", toastParameters);
       error = true;
     }
-    if(data.lastname.length < 3){
+    else if(!onlyChar.test(data.lastname)){
+      toast.error("lastname must have only characters", toastParameters);
+      error = true;
+    }
+    else if(whiteSpace.test(data.lastname)){
+      toast.error("lastname can't have spaces", toastParameters);
+      error = true;
+    }
+    else if(data.lastname.length < 3){
       toast.error("lastname must have atleast 3 characters", toastParameters);
       error = true;
     }
-    if(data.username.length < 3){
+    else if(!usernameValidity.test(data.username)){
+      toast.error("username must start with letter or _", toastParameters);
+      error = true;
+    }
+    else if(whiteSpace.test(data.username)){
+      toast.error("username can't have spaces", toastParameters);
+      error = true;
+    }
+    else if(data.username.length < 3){
       toast.error("username must have atleast 3 characters", toastParameters);
       error = true;
     }
-    if(!emailValidity.test(data.email)){
+    else if(!emailValidity.test(data.email)){
       toast.error("please enter valid email", toastParameters);
       error = true;
     }
-    if(!passwordValidity.test(data.password)){
+    else if(!passwordValidity.test(data.password)){
       toast.error("Password is weak, use combination of characters", toastParameters);
       error = true;
     }
-    if(data.password !== data.confirmpass){
+    else if(data.password !== data.confirmpass){
       toast.error("password and confirm password doesn't match", toastParameters);
       error = true;
     }

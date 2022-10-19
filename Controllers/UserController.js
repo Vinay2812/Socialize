@@ -34,10 +34,35 @@ const getAllUser = async (req, res)=>{
 
         res.status(200).json(users);
     } catch (err) {
-        console.lof("UserController -> getAlluser -> " + err);
+        console.log("UserController -> getAlluser -> " + err);
+        res.status(500).json(err);
     }
 }
-
+const searchUser = async(req, res)=>{
+    const { name }= req.body;
+    try {
+        let users = await UserModel.find({
+            $or:[
+                {firstname: {$regex: `^${name}`, $options: "i"}},
+                {lastname: {$regex: `^${name}`, $options: "i"}},
+                {username: {$regex: `^${name}`, $options: "i"}}
+            ]
+        });
+        if(users){
+            users = [...new Set(users.map((user)=>{
+                const {password, ...other} = user._doc;
+                return other;
+            }))]
+            res.status(200).json(users);
+        }
+        else{
+            res.status(400).json("no user found");
+        }
+    } catch (err) {
+        console.log("UserController -> searchuser -> " + err);
+        res.status(500).json(err);
+    }
+}
 const updateUser = async(req, res)=>{
     const id = req.params.id;
     const { _id, currentUserAdminStatus, password } = req.body;
@@ -143,4 +168,4 @@ const unfollowUser = async(req, res)=>{
         }
     }
 }
-module.exports = {getUser, updateUser, deleteUser, followUser, unfollowUser, getAllUser}
+module.exports = {getUser, updateUser, deleteUser, followUser, unfollowUser, getAllUser, searchUser}

@@ -1,7 +1,10 @@
+import { Zoom } from "react-toastify";
+
 export const toastParameters = {
     position: "top-right",
-    autoClose: 3000,
+    autoClose: 5000,
     pauseOnHover: true,
     draggable: true,
-    theme: "dark"
+    theme: "dark",
+    transition: Zoom
 }

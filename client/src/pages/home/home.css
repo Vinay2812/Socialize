@@ -11,6 +11,9 @@
     overflow-y: scroll;
     z-index: 1 !important;
 }
+.home-postSide{
+    overflow-y: scroll;
+}
 
 .home-mobile-navbar{
     display: none;

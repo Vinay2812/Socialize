@@ -10,7 +10,8 @@ const userRoute = require("./routes/userRoute");
 const postRoute = require("./routes/postRoute");
 const uploadRoute = require("./routes/uploadRoute")
 const cors = require("cors");
-const path = require("path")
+const path = require("path");
+const { searchUser } = require("./Controllers/UserController");
 
 dotenv.config(); // to use .env
 

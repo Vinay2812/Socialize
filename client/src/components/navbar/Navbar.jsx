@@ -7,7 +7,28 @@ import { logout } from "../../actions/AuthAction"
 import PostShare from "../postShare/PostShare"
 import { useState } from "react"
 import RightSide from "../rightSide/RightSide"
-import FollowersCard from "../followersCard/FollowersCard"
+import { useRef } from "react"
+import { useEffect } from "react"
+import { API } from "../../api/AxiosInstance"
+
+
+const SearchUser = ({user})=>{
+  return (
+    <div className="search-user">
+      <Link to={`/profile/${user._id}`}>
+        <img src={user.profilePicture.url} alt=""/>
+        <div className="search-names">
+          <div className="search-fullname">
+            {user.firstname} {user.lastname}
+          </div>
+          <div className="search-username">
+            @{user.username}
+          </div>
+        </div>
+      </Link>
+    </div>
+  )
+}
 
 const RightNavbarIcons = ()=>{
   const dispatch = useDispatch();
@@ -49,10 +70,43 @@ const Navbar = () => {
   
   const [menu, setMenu] = useState(false);
 
+  const searchRef = useRef();
+
+  const [search, setSearch] = useState(false);
+  const [searchVal, setSearchVal] = useState("");
+
+  const [users, setUsers] = useState({});
+
+  const handleSearch = ()=>{
+    setSearch(true)
+    setSearchVal(searchRef.current.value);
+  }
+
+  const [searchLoading, setSearchLoading] = useState(false);
+
+  useEffect(()=>{
+    
+    const searchUsers = async ()=>{
+      setSearchLoading(true);
+      const data = {
+        name: searchRef.current.value
+      }
+      const res = await API.post("user/search", data);
+      setUsers(res.data);
+      setSearchLoading(false);
+    }
+    if(searchVal.length <= 0){
+      setSearch(false);
+      return;
+    }
+    
+    searchUsers();
+  }, [searchVal])
   return (
     <>
       {
         menu ? 
+        <>
         <div className="menu-bar">
           <CancelOutlined onClick={()=>{
             setMenu(false);
@@ -61,8 +115,10 @@ const Navbar = () => {
             <RightNavbarIcons />
           </div>
           <RightSide />
-          
         </div>
+        <div className="menu-bar-left" onClick={()=>setMenu(false)}></div>
+        
+        </>
         : ""
       }
      <div className="navbar">  
@@ -72,7 +128,7 @@ const Navbar = () => {
               <img src={Logo} alt="" className='logo'/>
             </Link>
             <div className="search">
-                <input type="text" placeholder="#Explore" className='search'/>
+                <input type="text" value={searchVal} placeholder="#Explore" className='search' ref={searchRef} onChange={handleSearch}/>
                 <div className="searchIcon">
                     <Search className='icon'/>
                 </div>
@@ -132,7 +188,32 @@ const Navbar = () => {
               </div>
             </>
         : ""
-        } 
+        }
+      {
+        search ?
+        
+        <>
+          <div className="search-results">
+            <CancelOutlined onClick={()=>{
+              setSearch(false);
+              setSearchVal("");
+            }}/>
+          {    searchLoading 
+            ? "Loading..."
+            :
+              users.length ? users.map((user)=>{
+                return <SearchUser user={user}/>
+              }) : <div> No user found</div>
+            
+          } 
+          </div> 
+          <div className="empty" onClick={()=>{setSearch(false);setSearchVal("")}}>
+    
+          </div>
+        </>
+        : ""
+      }
+      
     </>
         
   )
