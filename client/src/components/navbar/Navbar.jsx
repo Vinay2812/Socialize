@@ -12,9 +12,9 @@ import { useEffect } from "react"
 import { API } from "../../api/AxiosInstance"
 
 
-const SearchUser = ({user})=>{
+const SearchUser = ({user, setSearch})=>{
   return (
-    <div className="search-user">
+    <div className="search-user" onClick={()=>setSearch(false)}>
       <Link to={`/profile/${user._id}`}>
         <img src={user.profilePicture.url} alt=""/>
         <div className="search-names">
@@ -202,7 +202,7 @@ const Navbar = () => {
             ? "Loading..."
             :
               users.length ? users.map((user)=>{
-                return <SearchUser user={user}/>
+                return <SearchUser user={user} setSearch={setSearch}/>
               }) : <div> No user found</div>
             
           } 
