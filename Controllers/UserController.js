@@ -112,7 +112,33 @@ const deleteUser = async(req, res)=>{
     }
 }
 
+const followUser = async(req, res)=>{
+    const otherUserId = req.params.id;
+    const {_id} = req.body;
 
+    if(_id === otherUserId){
+        res.status(403).json("You can't follow yourself");
+    }
+    else{
+        try {
+            const otherUser = await UserModel.findById(otherUserId);
+            const currentUser = await UserModel.findById(_id);
+            
+            if(!otherUser.followers.includes(_id)){
+                await otherUser.updateOne({ $push: {followers: _id } });
+                await currentUser.updateOne({ $push: {following: otherUserId } });
+
+                res.status(200).json("Followed Successfully");
+            }
+            else{
+                res.status(400).json("You already follow the user");
+            }
+        } catch (err) {
+            console.log("UserController -> followUser -> " + err);
+            res.status(500).json(err);
+        }
+    }
+};
 //
 const requestUser = async(req, res)=>{
     const otherUserId = req.params.id;
@@ -163,6 +189,7 @@ const cancelRequest = async(req, res)=>{
 const acceptUser = async(req, res)=>{
     const otherUserId = req.params.id;
     const {_id} = req.body;
+
     try {
         const otherUser = await UserModel.findById(otherUserId);
         const currentUser = await UserModel.findById(_id);
@@ -181,7 +208,7 @@ const acceptUser = async(req, res)=>{
 const rejectUser = async(req, res)=>{
     const otherUserId = req.params.id;
     const {_id} = req.body;
-    
+
     try {
         const otherUser = await UserModel.findById(otherUserId);
         const currentUser = await UserModel.findById(_id);
@@ -222,4 +249,4 @@ const unfollowUser = async(req, res)=>{
         }
     }
 }
-module.exports = {getUser, updateUser, deleteUser, requestUser, cancelRequest, acceptUser, rejectUser, unfollowUser, getAllUser, searchUser}
+module.exports = {getUser, updateUser, deleteUser, followUser, requestUser, cancelRequest, acceptUser, rejectUser, unfollowUser, getAllUser, searchUser}

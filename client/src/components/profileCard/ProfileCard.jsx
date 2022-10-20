@@ -140,16 +140,16 @@ const ProfileCard = ({location}) => {
 
     
     const handleFollow = ()=>{
-        // if(user.following.includes(params.id)){
-        //     dispatch(unfollowUser(params.id, user)).then(()=>{
-        //         dispatch(getTimeLinePosts(user._id));
-        //     });
-        // }
-        // else{
-        //     dispatch(followUser(params.id, user)).then(()=>{
-        //         dispatch(getTimeLinePosts(user._id));
-        //     });
-        // }
+        if(user.following.includes(params.id)){
+            dispatch(unfollowUser(params.id, user)).then(()=>{
+                dispatch(getTimeLinePosts(user._id));
+            });
+        }
+        else{
+            dispatch(followUser(params.id, user)).then(()=>{
+                dispatch(getTimeLinePosts(user._id));
+            });
+        }
     
     }
     

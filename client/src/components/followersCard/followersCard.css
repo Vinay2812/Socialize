@@ -4,8 +4,6 @@
     gap: 1rem;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    
     /* overflow-y: scroll; */
     /* padding-bottom: 10rem; */
     height:fit-content;
@@ -14,12 +12,12 @@
 }
 
 .all-users{
-    display: flex;
-    width: 80%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 0.25rem;
 }
 
 .followersCard > h3{
-    
     margin: 0;
     align-self: center;
     font-size: 1.25rem;
