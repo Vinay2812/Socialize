@@ -31,11 +31,20 @@ const User = ({other_user})=>{
 
     return (
         <div className="user">
-            <img src={other_user.profilePicture.url} alt="" className='followerImg' crossorigin/>
-            <Link className="allusers-name" to={`/profile/${other_user._id}`}>
-                <span>{other_user.firstname} {other_user.lastname}</span>
-                <span>@{other_user.username}</span>
-            </Link>
+            <img src={other_user.coverPicture.url} alt="Loading..." className='user-cover'/>
+            
+            <div className="img-name">
+                <img src={other_user.profilePicture.url} alt="Loading..." className='followerImg'/>
+                <Link className="allusers-name" to={`/profile/${other_user._id}`}>
+                    <span >{other_user.firstname} {other_user.lastname}</span>
+                    <span>@{other_user.username}</span>
+                    {/* <div className="user-bio">
+                        {other_user.bio}
+                    </div> */}
+                </Link>
+            </div>
+ 
+            
 
             <button 
                 className={!isFollowing?'button fc-button':'button fc-button unfollow' }

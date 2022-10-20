@@ -14,7 +14,8 @@ import { toastParameters } from '../../components/toastParameters'
 const handleFormValidation = (data)=>{
     let error = false;
     const onlyChar = /^[A-Za-z]*$/
-    const usernameValidity = /^[A-Za-z_]/
+    const usernameStartValidity = /^[A-Za-z_]/
+    const usernameValidity = /[A-Za-z_\d]+$/
     const passwordValidity = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$/
     const emailValidity = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/
     const whiteSpace = /\s/g;
@@ -43,8 +44,12 @@ const handleFormValidation = (data)=>{
       toast.error("lastname must have atleast 3 characters", toastParameters);
       error = true;
     }
+    else if(!usernameStartValidity.test(data.username)){
+      toast.error("username must start with '_' or alphabet ", toastParameters);
+      error = true;
+    }
     else if(!usernameValidity.test(data.username)){
-      toast.error("username must start with letter or _", toastParameters);
+      toast.error("username can have '_', alphabets & digits only ",toastParameters);
       error = true;
     }
     else if(whiteSpace.test(data.username)){

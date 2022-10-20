@@ -206,39 +206,40 @@ const ProfileCard = ({location}) => {
         <div className="profileName">
             <span>{profileUser.firstname} {profileUser.lastname}</span>
         </div>
-        <div className="followStatus">
-            <hr />
-            <div>
-            <div className="follow">
-                    <span>{profileUser.followers?.length}</span>
-                    <span>Followers</span>
-                </div>
-                <div className="vl"></div>
+        <Link to={`/people/${profileUser._id}`} style={{textDecoration: "none", color: "inherit"}}>
+            <div className="followStatus">
+                <hr />
+                <div>
                 <div className="follow">
-                    <span>{profileUser.following?.length}</span>
-                    <span>Following</span>
+                        <span>{profileUser.followers?.length}</span>
+                        <span>Followers</span>
+                    </div>
+                    <div className="vl"></div>
+                    <div className="follow">
+                        <span>{profileUser.following?.length}</span>
+                        <span>Following</span>
+                    </div>
+
+                    {profilePage && (
+                        <>
+                            <div className="vl"></div>
+                            <div className="follow">
+                                <span>{posts.filter((post)=>post.userId === profileUser._id).length}</span>
+                                <span>Posts</span> 
+                            </div>
+                        </>
+                    )}
                 </div>
-
-                {profilePage && (
-                    <>
-                        <div className="vl"></div>
-                        <div className="follow">
-                            <span>{posts.filter((post)=>post.userId === profileUser._id).length}</span>
-                            <span>Posts</span> 
-                        </div>
-                    </>
-                )}
+                <hr />
+                {
+                    profilePage && params.id !==user._id ? 
+                    <button className={user.following.includes(params.id)?"button unfollow-btn" : "button follow-btn"} onClick={handleFollow}>
+                        {user.following.includes(params.id)?"Following":"Follow"}
+                    </button>
+                    :""
+                }
             </div>
-            <hr />
-            {
-                profilePage && params.id !==user._id ? 
-                <button className={user.following.includes(params.id)?"button unfollow-btn" : "button follow-btn"} onClick={handleFollow}>
-                    {user.following.includes(params.id)?"Following":"Follow"}
-                </button>
-                :""
-            }
-        </div>
-
+        </Link>
         {profilePage? '' : 
             <span >
                 <Link to= {`/profile/${user._id}`} style={{textDecoration: "none", color: "inherit"}} >

@@ -13,8 +13,8 @@
 
 .all-users{
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 0.25rem;
+    grid-template-columns: 1fr;
+    /* column-gap: 0.25rem; */
 }
 
 .followersCard > h3{

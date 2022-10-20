@@ -11,24 +11,72 @@
     overflow-y: scroll;
 }
 
-
-
 .peopleCenter{
-    padding-top: 1.5rem;
+    margin-top: 1.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
+    width: calc(100% - 4rem);
     gap: 1rem;
+    -webkit-box-shadow: 0 0 0.9rem 0.35rem #000000; 
+    box-shadow: 0px 0px 1rem 0.35rem #000000;
+    margin-left: 2.5rem;
+    border-radius: 1rem;
 }
 
-.people-profileCard{
-    width: calc(100% - 1rem);
-    padding-left: 1.75rem;
+.people-options{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    border-radius: 1rem;
+    -webkit-box-shadow: 0 0 0.9rem 0.35rem #000000; 
+    box-shadow: 0px 0px 1rem 0.35rem #000000;
+    position: relative;
 }
 
-.people-mobile-navbar, .people-infocard{
-    display: none;
+
+.people-option{
+    cursor: pointer;
+    font-weight: 600;
+    position: relative;
+}
+.people-options > .active > span{
+    font-size: 1.2rem !important;
+}
+
+.people-options > .people-option > .sphere {
+    height: 1.3rem;
+    width: 1.3rem;
+    position: absolute;
+    border-radius: 50%;
+    background: 
+      radial-gradient(
+        rgb(213, 4, 4),
+        rgb(11, 11, 11)
+      );
+    background-size: 200% 200%;
+    animation: turn 3s ease-out 0s infinite;
+    top: 0.1rem;
+    right: -1.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@keyframes turn {
+    0%, 100% {
+      background-position: 20% 90%;
+    }
+    50% {
+      background-position:90% 20%;
+    }
+  }
+.people-info{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    padding: 1.5rem;
+    width: calc(100% - 3rem);
 }
 
 
@@ -39,10 +87,6 @@
     .people-left{
         display: none;
     }
-    .people-infocard{
-        display: contents;
-    }
-
 }
 
 @media screen and (max-width: 700px){
@@ -62,25 +106,17 @@
     .people-left{
         display: none;
     }
-    .people-profileSide{
-        display: none;
-    }
-    .people-rightSide{
-        display: none;
-    }
+
   
     .peopleCenter{
-        width: 100%;
+        width: calc(100% - 1rem);
         margin-top: 3rem;
+        margin-left: 0.5rem;
     }
 
-    .people-profileCard{
-        width: 100%;
-        padding: 0;
-    }
-    .people-infocard{
-        display: contents;
-        width: 100%;
+    .people-info{
+        grid-template-columns: 1fr;
+        width: 70%;
     }
 
 } 
