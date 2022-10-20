@@ -107,11 +107,14 @@
         display: none;
     }
 
-  
+    .people-rightSide{
+        display: none;
+    }
     .peopleCenter{
         width: calc(100% - 1rem);
         margin-top: 4rem;
         margin-left: 0.5rem;
+        z-index: 1 !important;
     }
 
     .people-info{
