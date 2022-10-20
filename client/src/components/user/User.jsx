@@ -1,32 +1,72 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import "./user.css"
-import { followUser, unfollowUser } from '../../actions/UserAction'
+import { followRequest, unfollowUser, cancelFollowRequest, acceptFollowRequest, rejectFollowRequest } from '../../actions/UserAction'
 import { getTimeLinePosts } from '../../actions/PostAction'
 import { Link } from 'react-router-dom';
 
 
 const User = ({other_user})=>{
     const {user} = useSelector((state)=>state.authReducer.authData);
-    const [isFollowing, setIsFollowing] = useState(user.following.includes(other_user._id));
-
-    const dispatch = useDispatch();
-    useEffect(()=>{
-        setIsFollowing(user.following.includes(other_user._id))
-    }, [other_user, user]);
-    const handleFollow = ()=>{
-        if(isFollowing){
-            dispatch(unfollowUser(other_user._id, user)).then(()=>{
-                dispatch(getTimeLinePosts(user._id));
-            });
+    const user_follow_status = {
+        1: "follow", //not in users followers and following
+        2: "cancel", //in users requestSend
+        3: "accept", // in users requestReceived
+        4: "reject", // in users requestReceived
+        5: "follow back", // in users followers and not in following
+        6: "following" // in users followers and following
+    }
+    const getStatus = ()=>{
+        if(user.requestSend.includes(other_user._id)){
+            return 2;
         }
-        else{
-            dispatch(followUser(other_user._id, user)).then(()=>{
-                dispatch(getTimeLinePosts(user._id));
-            });
+        else if(user.requestReceived.includes(other_user._id)){
+            return 3;
+        }
+        else if(user.followers.includes(other_user._id) && user.following.includes(other_user._id)){
+            return 6;
+        }
+        else if(user.followers.includes(other_user._id) && !user.following.includes(other_user._id)){
+            return 5;
+        }
+        else {
+            return 1;
         }
         
-        setIsFollowing(user.following.includes(user._id));
+    }
+    const [status, setStatus] = useState(getStatus);
+
+    const dispatch = useDispatch();
+
+    const handleFollow = ()=>{
+        switch (status) {
+            case 1:
+                dispatch(followRequest(other_user._id, user)).then(()=>alert("Sent"));
+                setStatus(2);
+                break;
+            case 2:
+                dispatch(cancelFollowRequest(other_user._id, user));
+                setStatus(getStatus());
+                break;
+            case 3:
+                dispatch(acceptFollowRequest(other_user._id, user));
+                setStatus(getStatus());
+                break;
+            case 4:
+                dispatch(rejectFollowRequest(other_user._id, user));
+                setStatus(1);
+                break;
+            case 5:
+                dispatch(followRequest(other_user._id, user));
+                setStatus(2);
+                break;
+            case 6:
+                dispatch(unfollowUser(other_user._id, user));
+                setStatus(1);
+                break;
+            default:
+                break;
+        }
     }
 
     return (
@@ -36,13 +76,33 @@ const User = ({other_user})=>{
                 <span>{other_user.firstname} {other_user.lastname}</span>
                 <span>@{other_user.username}</span>
             </Link>
-
+        <div className="request-btn-container">
             <button 
-                className={!isFollowing?'button fc-button':'button fc-button unfollow' }
+                className={status === 1?'button fc-button':'border-button fc-button' }
                 onClick={handleFollow}
             >
-                {!user.following.includes(other_user._id)?"Follow":"Unfollow"}
+                {   
+                    user_follow_status[status]
+                }
             </button>
+            {
+                status === 3?
+                <button 
+                    className='border-button fc-button'
+                    onClick={()=>{
+                        setStatus(4);
+                        handleFollow();
+                    }}
+                >
+                    {user_follow_status[4]}
+                </button>
+                : ""
+            }
+            
+        </div>
+            
+
+
         </div>
     )
 

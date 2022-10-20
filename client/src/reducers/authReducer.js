@@ -19,15 +19,54 @@ const authReducer = (
             return {...state, authData: action.data, updateLoding: false, error: false};
         case "UPDATING_FAIL":
             return {...state, updateLoading: false, error: true};
-        case "FOLLOW_USER":
-            return {...state, authData: {
-                        ...state.authData, user: 
-                            {...state.authData.user, following: [
-                                ...state.authData.user.following, action.data
+        case "FOLLOW_REQUEST":
+            if(state.authData.user.requestSend.includes(action.data)){
+                return state;
+            }
+            return {
+                    ...state, authData: {
+                        ...state.authData, user: {
+                            ...state.authData.user, requestSend: [
+                                ...state.authData.user.requestSend, action.data
                                 ]
                             }
                         }
+                }
+        case "CANCEL_REQUEST":
+            return {
+                ...state, authData: {
+                    ...state.authData, user: {
+                        ...state.authData.user, requestSend: [
+                            ...state.authData.user.requestSend.filter((id)=>id!==action.data)
+                        ]
                     }
+                }
+            }
+        case "ACCEPT_REQUEST":
+            return {
+                ...state, authData: {
+                    ...state.authData, user: {
+                        ...state.authData.user, 
+                        requestReceived: [
+                            ...state.authData.user.requestReceived.filter((id)=>id!==action.data)
+                        ],
+                        following:[
+                            ...state.authData.user.following, action.data
+                        ]
+                    }
+                }
+            }
+        case "REJECT_REQUEST":
+            return {
+                ...state, authData:{
+                    ...state.authData, user: {
+                        ...state.authData.user, 
+                        requestReceived: [
+                            ...state.authData.user.requestReceived.filter((id)=>id!==action.data)
+                        ]
+                    }
+                }
+            }
         case "UNFOLLOW_USER":
             return {...state, authData: {
                         ...state.authData, user: 

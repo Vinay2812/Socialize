@@ -14,10 +14,29 @@ export const updateUser = (id, formData) => {
     }
 }
 
-export const followUser = (id, data) =>{
+export const followRequest = (id, data) =>{
     return async(dispatch)=>{
-        dispatch({type: "FOLLOW_USER", data: id})
-        await UserApi.followUser(id, data);
+        dispatch({type: "FOLLOW_REQUEST", data: id})
+        await UserApi.followRequest(id, data);
+    }
+}
+export const cancelFollowRequest = (id, data) =>{
+    return async(dispatch)=>{
+        dispatch({type: "CANCEL_REQUEST", data: id})
+        await UserApi.cancelFollowRequest(id, data);
+    }
+}
+export const acceptFollowRequest = (id, data) =>{
+    return async(dispatch)=>{
+        await UserApi.acceptFollowRequest(id, data);
+        dispatch({type: "ACCEPT_REQUEST", data: id})
+        
+    }
+}
+export const rejectFollowRequest = (id, data) =>{
+    return async(dispatch)=>{
+        dispatch({type: "REJECT_REQUEST", data: id})
+        await UserApi.rejectFollowRequest(id, data);
     }
 }
 

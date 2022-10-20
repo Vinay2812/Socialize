@@ -163,7 +163,6 @@ const cancelRequest = async(req, res)=>{
 const acceptUser = async(req, res)=>{
     const otherUserId = req.params.id;
     const {_id} = req.body;
-
     try {
         const otherUser = await UserModel.findById(otherUserId);
         const currentUser = await UserModel.findById(_id);
@@ -182,7 +181,7 @@ const acceptUser = async(req, res)=>{
 const rejectUser = async(req, res)=>{
     const otherUserId = req.params.id;
     const {_id} = req.body;
-
+    
     try {
         const otherUser = await UserModel.findById(otherUserId);
         const currentUser = await UserModel.findById(_id);

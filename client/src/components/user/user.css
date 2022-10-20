@@ -24,36 +24,31 @@
     justify-content: center;
     text-decoration: none;
     color: inherit;
-    font-size: 0.85rem;
-    height: 4rem;
+    font-size: 1rem;
+    /* height: 4rem; */
     text-align: center;
     padding: 0.5rem;
     /* padding-left: 0.2rem; */
 }
 .allusers-name>span:nth-of-type(1){
     font-weight: 500;
-    
+    width: 100%;
+    overflow-y: scroll;
 }
 .allusers-name>span:nth-of-type(2){
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     color: var(--lightGray)
 }
 
+.request-btn-container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
 .fc-button{
-    height: 2rem;
-    width: 6rem;
-    padding: 0 1rem;
+    flex: 1;
+    padding: 0.5rem 1rem !important;
     font-weight: 600;
-    font-size: 0.9rem;
-}
-
-.unfollow{
-    background: transparent;
-    color:var(--blue);
-    border: 0.125rem solid var(--blue);
-}
-
-.unfollow:hover{
-    background: linear-gradient(to right, var(--blue), var(--lightblue));
-    color: var(--white);
+    font-size: 1rem;
 }

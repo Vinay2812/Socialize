@@ -32,8 +32,7 @@
   background: linear-gradient(to right, var(--blue), rgb(8, 117, 220));
   cursor: pointer;
   color: var(--lightwhite);
-  height: 2.5rem;
-  width: 6rem;
+  min-width: 6rem;
   
 }
 
@@ -41,7 +40,29 @@
   background: transparent;
   transition: 200ms ease-in;
   color: var(--darkblue);
+  padding: 0.125rem;
   border: 0.125rem solid var(--darkblue);
+  min-width: 6rem;
+}
+
+.border-button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+  padding: 0.125rem;
+  border: 0.125rem solid var(--blue);
+  background: transparent;
+  cursor: pointer;
+  color: var(--blue);
+  min-width: 6rem;
+}
+.border-button:hover{
+  border: none;
+  padding: 0.25rem;
+  background: linear-gradient(to right, var(--blue), rgb(8, 117, 220));
+  color: var(--white) !important;
+  min-width: 6rem;
 }
 
 ::-webkit-scrollbar{
