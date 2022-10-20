@@ -2,12 +2,10 @@ import PostSide from '../../components/postSide/PostSide'
 import ProfileSide from '../../components/profileSide/ProfileSide'
 import RightSide from '../../components/rightSide/RightSide'
 import "./home.css"
-
-
 import Navbar from '../../components/navbar/Navbar'
 
-
 function Home() {
+  sessionStorage.setItem("active", "home");
   return (
     <>
       <div className="home-navbar">
@@ -18,9 +16,8 @@ function Home() {
         <div className="home-profileSide">
           <ProfileSide location="homePage" />
         </div>
-
         <div className="home-postSide">
-          <PostSide />
+           <PostSide />
         </div>
         <div className="home-rightSide">
           <RightSide />

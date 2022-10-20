@@ -9,9 +9,9 @@ import { getUser } from '../../api/UserRequest'
 
 import {toast, ToastContainer} from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
-import { toastParameters } from '../../components/toastParameters';
+import {toastParameters} from "../toastParameters"
 
-import { addComment, getTimeLinePosts } from '../../actions/PostAction'
+import { addComment, getTimeLinePosts } from '../../actions/PostAction';
 
 import {Link} from "react-router-dom"
 

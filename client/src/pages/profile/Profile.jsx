@@ -9,6 +9,7 @@ import RightSide from '../../components/rightSide/RightSide'
 import "./profile.css"
 
 const Profile = () => {
+  sessionStorage.setItem("active", "profile");
   return (
     <>
     <div className="profile-navbar">

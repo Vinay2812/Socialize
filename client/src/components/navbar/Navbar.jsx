@@ -63,10 +63,7 @@ const Navbar = () => {
   const [postShare, setPostShare] = useState(false);
   const {profilePicture, _id} = useSelector((state)=>state.authReducer.authData.user);
   
-
-  const params = useParams();
-
-  const [centerActive, setCenterActive] = useState(params.id?"profile":"home");
+  const centerActive = sessionStorage.getItem("active");
   
   const [menu, setMenu] = useState(false);
 
@@ -141,31 +138,33 @@ const Navbar = () => {
         </div>
         <div className="navItemContainer">
           <div className="centerNavIcons">
-            <div className={centerActive==="home"?"navIcons active":"navIcons"} onClick={()=>setCenterActive("home")}>
+            <div className={centerActive==="home"?"navIcons active":"navIcons"}>
                 <div className = 'sphere'></div>
                 <Link to="/home" style={{textDecoration: "none", color: "inherit"}}>
                   <HomeOutlined />
                   <span>Home</span>
                 </Link>
             </div>
-            <div className={centerActive==="people"?"navIcons active":"navIcons"} onClick={()=>setCenterActive("people")}>
+            <div className={centerActive==="people"?"navIcons active":"navIcons"} >
                 <div className = 'sphere'></div>
-                <Link to="/home" style={{textDecoration: "none", color: "inherit"}}>
+                <Link to={`/people/${_id}`} style={{textDecoration: "none", color: "inherit"}}>
                   <GroupOutlined />
                   <span>People</span>
                 </Link>
             </div>
-            <div className="navIcons" onClick={()=>{setPostShare(true);setCenterActive("home");}}>
+            <div className="navIcons" onClick={()=>{setPostShare(true);}}>
                 <AddBox />
                 <span>New Post</span>
             </div>
 
-            <div className={centerActive==="chat"?"navIcons active":"navIcons"} onClick={()=>setCenterActive("chat")}>
-              <div className = 'sphere'></div>
-              <ChatOutlined />
-              <span>Chat</span>
+            <div className={centerActive==="chat"?"navIcons active":"navIcons"} onClick={()=>sessionStorage.setItem("active", "chat")}>
+              <Link to="#" style={{textDecoration: "none", color: "inherit"}}>
+                <div className = 'sphere'></div>
+                <ChatOutlined />
+                <span>Chat</span>
+              </Link>
             </div>
-            <div className={centerActive==="profile"?"navIcons active":"navIcons"} onClick={()=>setCenterActive("profile")}>
+            <div className={centerActive==="profile"?"navIcons active":"navIcons"} >
             <div className = 'sphere'></div>
                 <Link to={`/profile/${_id}`}style={{textDecoration: "none", color: "inherit"}}>
                   <img src={profilePicture.url} alt="" crossorigin/>

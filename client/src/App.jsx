@@ -5,6 +5,7 @@ import Profile from './pages/profile/Profile';
 
 import {Routes, Route, Navigate} from "react-router-dom"
 import { useSelector } from 'react-redux';
+import People from "./pages/people/People"
 
 
 
@@ -19,6 +20,7 @@ function App() {
           <Route path = "/home" element={user?<Home />:<Navigate to = "../auth"/>}/>
           <Route path="/auth" element={user?<Navigate to = "../home"/> : <Auth />} />
           <Route path="/profile/:id" element={user?<Profile /> : <Navigate to="../auth"/>} />
+          <Route path="/people/:id" element={user?<People /> : <Navigate to="../auth"/>} />
         </Routes>  
     </div>
   );

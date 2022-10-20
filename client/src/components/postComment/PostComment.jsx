@@ -4,9 +4,6 @@ import { DeleteForeverOutlined} from "@material-ui/icons"
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteComment, getTimeLinePosts } from '../../actions/PostAction'
 
-
-
-
 const Comment = ({data, post})=>{
     const {user} = useSelector((state)=>state.authReducer.authData)
     const isMyComment = (data.commenterId === user._id || post.userId === user._id);

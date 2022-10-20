@@ -1,0 +1,86 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.people{
+    position: relative;
+    display: grid;
+    grid-template-columns: 25% 45% 25%;
+    gap: 2.5%;
+    height: calc(100vh - 5rem);
+    overflow-y: scroll;
+}
+
+
+
+.peopleCenter{
+    padding-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 1rem;
+}
+
+.people-profileCard{
+    width: calc(100% - 1rem);
+    padding-left: 1.75rem;
+}
+
+.people-mobile-navbar, .people-infocard{
+    display: none;
+}
+
+
+@media screen and (max-width: 1024px) and (min-width: 700px){
+    .people{
+        grid-template-columns: 60% 37.5%;
+    }
+    .people-left{
+        display: none;
+    }
+    .people-infocard{
+        display: contents;
+    }
+
+}
+
+@media screen and (max-width: 700px){
+    
+    .people-navbar{
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: transparent;
+    }
+    .people{
+        grid-template-columns: 100%; 
+        justify-content: center;
+    }
+    .people-left{
+        display: none;
+    }
+    .people-profileSide{
+        display: none;
+    }
+    .people-rightSide{
+        display: none;
+    }
+  
+    .peopleCenter{
+        width: 100%;
+        margin-top: 3rem;
+    }
+
+    .people-profileCard{
+        width: 100%;
+        padding: 0;
+    }
+    .people-infocard{
+        display: contents;
+        width: 100%;
+    }
+
+} 

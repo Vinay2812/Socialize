@@ -112,8 +112,9 @@ const deleteUser = async(req, res)=>{
     }
 }
 
-//follow the user
-const followUser = async(req, res)=>{
+
+//
+const requestUser = async(req, res)=>{
     const otherUserId = req.params.id;
     const {_id} = req.body;
 
@@ -121,26 +122,80 @@ const followUser = async(req, res)=>{
         res.status(403).json("You can't follow yourself");
     }
     else{
+        
         try {
             const otherUser = await UserModel.findById(otherUserId);
             const currentUser = await UserModel.findById(_id);
-            
-            if(!otherUser.followers.includes(_id)){
-                await otherUser.updateOne({ $push: {followers: _id } });
-                await currentUser.updateOne({ $push: {following: otherUserId } });
 
-                res.status(200).json("Followed Successfully");
+            if(currentUser.requestSend.includes(otherUserId)){
+                res.status(200).json("Request already sent");
+                return;
             }
-            else{
-                res.status(400).json("You already follow the user");
-            }
+
+            await currentUser.updateOne({ $push: {requestSend: otherUserId}});
+            await otherUser.updateOne({$push: {requestReceived: _id}});
+
+            res.status(200).json("Request Send");
         } catch (err) {
-            console.log("UserController -> followUser -> " + err);
+            console.log("usercontroller -> requestuser -> " + err);
             res.status(500).json(err);
         }
     }
-};
 
+}
+const cancelRequest = async(req, res)=>{
+    const otherUserId = req.params.id;
+    const {_id} = req.body;
+
+    try {
+        const otherUser = await UserModel.findById(otherUserId);
+        const currentUser = await UserModel.findById(_id);
+
+        await currentUser.updateOne({$pull: {requestSend: otherUserId}});
+        await otherUser.updateOne({$pull: {requestReceived: _id}});
+
+        res.status(200).json("Request cancelled");
+    } catch (err) {
+        console.log("usercontroller -> requestuser -> " + err);
+        res.status(500).json(err);
+    }
+}
+const acceptUser = async(req, res)=>{
+    const otherUserId = req.params.id;
+    const {_id} = req.body;
+
+    try {
+        const otherUser = await UserModel.findById(otherUserId);
+        const currentUser = await UserModel.findById(_id);
+
+        await currentUser.updateOne({$pull: {requestReceived: otherUserId}});
+        await otherUser.updateOne({$pull: {requestSend: _id}});
+        await currentUser.updateOne({$push: {followers: otherUserId}});
+        await otherUser.updateOne({$push: {following: _id}});
+
+        res.status(200).json("Follow request accepted");
+    } catch (error) {
+        console.log("usercontroller -> acceptuser -> " + err);
+        res.status(500).json(err);
+    }
+}
+const rejectUser = async(req, res)=>{
+    const otherUserId = req.params.id;
+    const {_id} = req.body;
+
+    try {
+        const otherUser = await UserModel.findById(otherUserId);
+        const currentUser = await UserModel.findById(_id);
+
+        await currentUser.updateOne({$pull: {requestReceived: otherUserId}});
+        await otherUser.updateOne({$pull: {requestSend: _id}});
+
+        res.status(200).json("Request rejected");
+    } catch (err) {
+        console.log("usercontroller ->rejectuser -> " + err);
+        res.status(500).json(err);
+    }
+}
 const unfollowUser = async(req, res)=>{
     const otherUserId = req.params.id;
     const {_id} = req.body;
@@ -168,4 +223,4 @@ const unfollowUser = async(req, res)=>{
         }
     }
 }
-module.exports = {getUser, updateUser, deleteUser, followUser, unfollowUser, getAllUser, searchUser}
+module.exports = {getUser, updateUser, deleteUser, requestUser, cancelRequest, acceptUser, rejectUser, unfollowUser, getAllUser, searchUser}
