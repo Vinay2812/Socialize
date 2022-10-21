@@ -13,25 +13,32 @@
 }
 
 .logoSearch{
-    width: calc(100% - 8rem);
+    width: calc(100%-5rem);
     display: flex;
     align-items: center;
     justify-content: center;
     align-self: center;
-    gap: 0.5rem;
     position: relative;
+    padding: 0 2.5rem;
+    gap: 1rem;
 }
+.logoSearch > a{
+    flex: 1;
+}
+
 .search{
     display: flex;
     border-radius: 5rem;
     padding: 0.25rem 0.5rem;
     background-color: var(--white);
-    width: calc(100% - 5rem);
+    width: calc(100% - 1rem);
+    flex: 1.5;
+    position: relative;
 }
 .search>input{
     border: none;
     font-size: 0.95rem;
-    width: 100%;
+    
 }
 
 .search>input:focus{
@@ -52,8 +59,10 @@
     color: black;
 }
 .logo{
-    width: 5rem;
-    height: 2.5rem;
+   background-color: transparent;
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
 }
 
 
@@ -282,16 +291,17 @@
     }
     .navItemContainer:nth-of-type(1){
         position: fixed;
-        width: 105%;
+        width: 100%;
         top: 0;
         padding: 0.5rem 0;
         z-index: 2;
         background-color: var(--lightBlack);
         display: grid;
         grid-template-columns: 90% 10%;
-        justify-content: center;
-        align-items: center;
-        margin-left: -5%;
+        /* justify-content: center;
+        align-items: center; */
+        /* margin-left: -5%; */
+
     }
     .navItemContainer:nth-of-type(2){
         width: 100%;
@@ -321,10 +331,10 @@
         width: 80%;
         margin-left: 10%;
     }
-    .logoSearch{
+    /* .logoSearch{
         width: 90%;
         margin-left: 10%;
-    }
+    } */
     .menu{
         position: relative;
         display: flex;
