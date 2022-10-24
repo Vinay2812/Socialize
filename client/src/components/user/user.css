@@ -93,3 +93,11 @@
     background: linear-gradient(to right, var(--blue), var(--lightblue));
     color: var(--white);
 }
+
+@media screen and (max-width: 700px){
+    .user{
+        width: 70%;
+        padding: 1rem 2rem;
+        
+    }
+}

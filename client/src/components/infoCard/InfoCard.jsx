@@ -39,6 +39,7 @@ const InfoCard = () => {
     const handleBio = (e)=>{
         setRows(Math.min(bioRef.current.value.split("\n").length, 15));
         setFormData({...formData, [e.target.name]: e.target.value})
+        
     }
     const handleChange = (e) => {
         setFormData({...formData, [e.target.name]: e.target.value});

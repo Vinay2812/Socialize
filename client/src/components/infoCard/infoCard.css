@@ -50,12 +50,15 @@
     color: var(--lightGray);
     align-self: center;
     font-size: 0.95rem;
-    overflow-y: hidden;
+    /* overflow-y: hidden; */
     border: 2px solid var(--darkgray);
     margin-top: 0.2rem;
     padding: 0.3rem 0.5rem;
     border-radius: 1rem;
     resize: none;
+    overflow: hidden;
+    min-height: xxx;
+    white-space: wrap;
 }
 .info > input:focus, .info > textarea:focus{
     outline: none;

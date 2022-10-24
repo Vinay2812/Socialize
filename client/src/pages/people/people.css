@@ -73,8 +73,7 @@
 .people-info{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    column-gap: 1rem;
-    /* padding: 1.5rem; */
+    gap: 1rem;
     width: 100%;
 }
 
@@ -111,7 +110,7 @@
     }
     .peopleCenter{
         width: calc(100% - 1rem);
-        margin-top: 4rem;
+        margin-top: 6rem;
         margin-left: 0.5rem;
         z-index: 1 !important;
     }

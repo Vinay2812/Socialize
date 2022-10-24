@@ -45,13 +45,14 @@ const User = ({other_user})=>{
             </div>
  
             
-
-            <button 
-                className={!isFollowing?'button fc-button':'button fc-button unfollow' }
-                onClick={handleFollow}
-            >
-                {!user.following.includes(other_user._id)?"Follow":"Unfollow"}
-            </button>
+            {other_user._id === user._id ? "":
+                <button 
+                    className={!isFollowing?'button fc-button':'button fc-button unfollow' }
+                    onClick={handleFollow}
+                >
+                    {!user.following.includes(other_user._id)?"Follow":"Unfollow"}
+                </button>
+            }
         </div>
     )
 

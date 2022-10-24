@@ -29,27 +29,34 @@ const ProfileCard = ({location}) => {
 
     const params = useParams();
 
-    const [profileUser, setProfileUser] = useState(user);
+    const [profileUser, setProfileUser] = useState(null);
     const isMyProfile = (params.id === undefined || params.id === user._id)?true:false;
 
-    const [coverImage, setCoverImage] = useState(profileUser.coverPicture.url);
-    const [profileImage, setProfileImage] = useState(profileUser.profilePicture.url);
+    const [coverImage, setCoverImage] = useState(profileUser?.coverPicture.url);
+    const [profileImage, setProfileImage] = useState(profileUser?.profilePicture.url);
+
+    const [profileLoading, setProfileLoading] = useState(false);
 
     useEffect(()=>{
         const getProfileUser = async ()=>{
             if(!isMyProfile){    
+                setProfileLoading(true);
                 const {data} = await getUser(params.id);
                 setProfileUser(data);
                 setCoverImage(data.coverPicture.url);
                 setProfileImage(data.profilePicture.url);
+                setProfileLoading(false);
             }
             else{
                 setProfileUser(user);
+                setCoverImage(user.coverPicture.url);
+                setProfileImage(user.profilePicture.url);
             }
         }
+
         getProfileUser();
         
-    }, [params.id, user])
+    }, [params.id, user, isMyProfile])
 
     const {password, ...formData} = user;
 
@@ -154,7 +161,7 @@ const ProfileCard = ({location}) => {
     }
     
   return (
-     
+     profileLoading ? <Loader /> : 
      <div className="profileCard" style={!profilePage?{width: "calc(100% - 5rem)", marginTop: "0.5rem"}:{}}>
         {uploading ? <Loader /> :
         <>
@@ -204,19 +211,19 @@ const ProfileCard = ({location}) => {
             </div>
         </div>
         <div className="profileName">
-            <span>{profileUser.firstname} {profileUser.lastname}</span>
+            <span>{profileUser?.firstname} {profileUser?.lastname}</span>
         </div>
-        <Link to={`/people/${profileUser._id}`} style={{textDecoration: "none", color: "inherit"}}>
+        <Link to={`/people/${profileUser?._id}`} style={{textDecoration: "none", color: "inherit"}}>
             <div className="followStatus">
                 <hr />
                 <div>
                 <div className="follow">
-                        <span>{profileUser.followers?.length}</span>
+                        <span>{profileUser?.followers?.length}</span>
                         <span>Followers</span>
                     </div>
                     <div className="vl"></div>
                     <div className="follow">
-                        <span>{profileUser.following?.length}</span>
+                        <span>{profileUser?.following?.length}</span>
                         <span>Following</span>
                     </div>
 
@@ -224,7 +231,7 @@ const ProfileCard = ({location}) => {
                         <>
                             <div className="vl"></div>
                             <div className="follow">
-                                <span>{posts.filter((post)=>post.userId === profileUser._id).length}</span>
+                                <span>{posts.filter((post)=>post.userId === profileUser?._id).length}</span>
                                 <span>Posts</span> 
                             </div>
                         </>
