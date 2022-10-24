@@ -8,7 +8,7 @@
     -webkit-box-shadow: 0 0 0.9rem 0.35rem #000000; 
     box-shadow: 0px 0px 1rem 0.35rem #000000;
     background-color: var(--black);
-    min-height: 20rem;
+    min-height: 25rem;
 }
 
 .postShare-left{
@@ -56,7 +56,8 @@
     gap: 0.5rem;
     position: relative !important;
     z-index: 1;
-    color: var(--white);    
+    color: var(--white);   
+    cursor: pointer !important; 
 }
 .postShare-option > svg{
     font-size: 1.8rem;
@@ -190,7 +191,48 @@
     aspect-ratio: 1;
 }
 
+.tag-container{
+    width: 100%;
+    height: 100%;
+    flex: 1;
+    display: flex;
+    gap: 0.5rem;
+    padding: 1rem;
+    border-radius: 2rem;
+    background-color: transparent;
+    color: var(--white);
+    border: 0.125rem solid var(--gray);
+}
+.tag-container > textarea{
+    height: 1.5rem;
+    width: 8rem; 
+    background-color: transparent;
+    color: var(--white);
+    border: none;
+    outline: none;
+    resize: none;
+}
 
+.user-tag{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 2rem;
+    padding: 0.2rem 0.5rem;
+    background-color: var(--darkblue);
+    color: var(--white);
+    font-weight: 500;
+    font-size: 1.1rem;
+    text-align: center;
+    height: 1.8rem;
+    overflow-y: scroll;
+    gap: 0.3rem;
+}
+.user-tag > svg{
+    cursor: pointer;
+    font-size: 1rem;
+    color: rgb(199, 4, 4);
+}
 @media screen and (max-width: 849px){
     .postShare{
         position: relative;

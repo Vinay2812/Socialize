@@ -13,3 +13,4 @@ export const updateUser = async (id, data) => await API.patch(`/user/${id}`, dat
 export const getAllUser = async () => await API.get("/user/");
 export const followUser = async(id, data) => await API.put(`/user/${id}/follow`, data);
 export const unfollowUser = async(id, data) => await API.put(`/user/${id}/unfollow`, data);
+export const searchUser = async(data)=> await API.post("user/search", data);

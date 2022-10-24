@@ -9,7 +9,7 @@ import { useState } from "react"
 import RightSide from "../rightSide/RightSide"
 import { useRef } from "react"
 import { useEffect } from "react"
-import { API } from "../../api/AxiosInstance"
+import { searchUser } from "../../api/UserRequest"
 
 
 const SearchUser = ({user, setSearch})=>{
@@ -88,7 +88,7 @@ const Navbar = () => {
       const data = {
         name: searchRef.current.value
       }
-      const res = await API.post("user/search", data);
+      const res = await searchUser(data);
       setUsers(res.data);
       setSearchLoading(false);
     }

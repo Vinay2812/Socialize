@@ -16,7 +16,7 @@ const People = () => {
   const id = useParams().id;
 
   const [user, setUser] = useState(null);
-  const [userLoading, setUserLoading] = useState(false);
+
   useEffect(()=>{
 
     const fetchUser = async ()=>{
@@ -27,20 +27,21 @@ const People = () => {
       setUser(self);
     }
     else{
-      setUserLoading(true);
       fetchUser().then((data)=>{
         setUser(data);
-        setUserLoading(false);
       })
       
     }
-  }, [id])
+  }, [id, self])
 
   const [followers, setFollowers] = useState(null);
   const [following, setFollowing] = useState(null);
 
+  const [dataLoading, setDataLoading] = useState(false);
+
   useEffect(()=>{
     const getPeople = async ()=>{
+      setDataLoading(true);
       setFollowers(await Promise.all(
         user?.followers.map(async (id)=>{
           const {data} = await getUser(id);
@@ -54,10 +55,11 @@ const People = () => {
           return data;
         })
       ))
+      setDataLoading(false);
     }
-    if(!user)return;
+    
     getPeople();
-  },[user, userLoading]);
+  },[user]);
 
   const [peopleActive, setPeopleActive] = useState("followers")
 
@@ -71,9 +73,9 @@ const People = () => {
       <div className="people-left">
         <ProfileLeft />
       </div>
-      {
+      {/* {
           userLoading ? "Loading..."
-          : 
+          :  */}
           
           <div className="peopleCenter">
           <div className="people-options">
@@ -82,18 +84,19 @@ const People = () => {
                 <div className="sphere">{user?.followers.length}</div>
                 <span>Followers</span>
               </div>
-              <div className="vl"></div>
+              {/* <div className="vl"></div> */}
               <div className={peopleActive === "following"?'people-option active': 'people-option'} onClick={()=>setPeopleActive("following")}>
-                <div className="sphere">{user?.followers.length}</div>
+                <div className="sphere">{user?.following.length}</div>
                 <span>Followings</span>
               </div>
           </div>
           {
-            
+            dataLoading ? "Loading...":
             peopleActive === "followers" ?
             <div className="people-info">
               {
                 followers?.map((follower)=>{
+                  
                   return <User other_user={follower}/>
                 })
               }
@@ -109,7 +112,7 @@ const People = () => {
           }     
         </div>
 
-      }
+      {/* } */}
         
         <div className="people-rightSide">
           <RightSide />

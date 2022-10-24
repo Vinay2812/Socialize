@@ -9,9 +9,10 @@ const authRoute = require("./routes/authRoute");
 const userRoute = require("./routes/userRoute");
 const postRoute = require("./routes/postRoute");
 const uploadRoute = require("./routes/uploadRoute")
+const trendRoute = require("./routes/trendRoute");
 const cors = require("cors");
 const path = require("path");
-const { searchUser } = require("./Controllers/UserController");
+
 
 dotenv.config(); // to use .env
 
@@ -47,6 +48,7 @@ app.use((req, res, next) => {
 app.use("/auth", authRoute);
 app.use("/user", userRoute);
 app.use("/post", postRoute);
+app.use("/trends", trendRoute);
 
 /* for uploading images and videos to local storage*/
 app.use("/upload", uploadRoute);

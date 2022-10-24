@@ -30,6 +30,7 @@
     "redux-thunk": "^2.4.1",
     "redux-tools": "^3.2.0",
     "timeago.js": "^4.0.2",
+    "twitter-woeid": "^1.0.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

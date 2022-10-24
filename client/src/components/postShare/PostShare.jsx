@@ -1,7 +1,7 @@
 import React, {useState, useRef} from 'react'
 import "./postShare.css"
 
-import { PlayCircleOutline,  CancelOutlined, AddPhotoAlternateOutlined, AddLocationOutlined, Bookmarks} from "@material-ui/icons"
+import { PlayCircleOutline,  CancelOutlined, AddPhotoAlternateOutlined, AddLocationOutlined, Bookmarks, Cancel} from "@material-ui/icons"
 import {useDispatch, useSelector} from "react-redux"
 import { uploadPost } from '../../actions/UploadActions'
 // import { uploadImage, uploadPost, uploadVideo } from '../../actions/UploadActions'
@@ -18,6 +18,8 @@ import { storage } from '../../firebase/firebase';
 
 import Loader from '../loader/Loader'
 import { useParams } from 'react-router-dom'
+import { API } from '../../api/AxiosInstance'
+import { searchUser } from '../../api/UserRequest'
 
 
 const ShareOptions = ({handleSubmit, setIsPublicPost})=>{
@@ -57,6 +59,17 @@ const ShareOptions = ({handleSubmit, setIsPublicPost})=>{
     )
 }
 
+const UserTag = ({tag, removeTag})=>{
+    const [cancel, setCancel] = useState(false);
+    return (
+        !cancel ? 
+        <div className='user-tag'>
+            {tag}
+            <Cancel onClick = {()=>{removeTag(tag);setCancel(true)}}/>
+        </div>
+        : ""
+    )
+}
 const PostShare = ({setPostShare}) => {
     const [image, setImage] = useState(null);
     const [video, setVideo] = useState(null);
@@ -188,6 +201,42 @@ const PostShare = ({setPostShare}) => {
     }
     const params = useParams();
     const isMyProfile = (params.id === undefined || params.id === user._id)?true:false;
+    const tagRef = useRef();
+    const [tags, setTags] = useState([]);
+    const removeTag = (name)=>{
+        setTags([tags.filter((tag)=>tag!==name)]);
+    };
+
+    const [search, setSearch] = useState(false);
+  const [searchVal, setSearchVal] = useState("");
+
+  const [users, setUsers] = useState({});
+
+  const [searchLoading, setSearchLoading] = useState(false);
+
+
+    const handleSearch = async()=>{
+        
+        const space = /[\s\t\n]/;
+        const val = tagRef.current.value;
+        setSearch(true);
+        setSearchVal(val);
+        if(space.test(val)){
+            if(val.length){
+                setTags([...tags, val.slice(0, val.length - 1)]);
+            }
+            tagRef.current.value = "";
+        }
+        else{
+            setSearchLoading(true);
+            const data = {
+                name: val
+            }
+            const res = await searchUser(data);
+            setUsers(res.data);
+            setSearchLoading(false);
+        }
+    }
   return (
     <>
     {(postUpload === true)
@@ -248,13 +297,15 @@ const PostShare = ({setPostShare}) => {
                 
                 <div className='postShare-right'>
                     <textarea 
-                            type="text" 
-                            placeholder="Write post description"
-                            ref={descRef}
-                            rows={rows}
-                            onChange = {handleDesc}
-                            required
+                        type="text" 
+                        placeholder="Write post description"
+                        ref={descRef}
+                        rows={rows}
+                        onChange = {handleDesc}
+                        required
                     />
+
+                    
                     
                     {image && (
                             <div className="previewImage">
@@ -276,7 +327,14 @@ const PostShare = ({setPostShare}) => {
                                 </video>   
                             </div>
                     )}
-                    
+                    {/* <div className="tag-container">
+                        {
+                            tags?.map((tag)=>{
+                                return <UserTag tag={tag} removeTag={removeTag}/>
+                            })
+                        }
+                        <textarea onChange={handleSearch} ref={tagRef} />   
+                    </div> */}
                     <ShareOptions 
                         handleSubmit={handleSubmit} 
                         reset = {reset}

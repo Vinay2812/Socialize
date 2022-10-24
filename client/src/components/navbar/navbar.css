@@ -149,7 +149,7 @@
 .new-post{
     position: absolute;
     z-index: 3;
-    top: 20%;
+    top: 0;
     left: calc(50% - 20rem);
 }
 

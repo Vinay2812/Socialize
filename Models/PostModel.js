@@ -33,6 +33,10 @@ const PostSchema = mongoose.Schema(
         video: {
             name: String,
             url: String
+        },
+        tags: {
+            type: Array,
+            default: []
         }
     },
     {
