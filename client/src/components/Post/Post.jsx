@@ -178,7 +178,7 @@ const Post = ({data}) => {
             {data.userId === user._id ? <MoreVert onClick={()=>setDropDownSelected(true)}/> : "" }
             {
                 hover ? 
-                <Link to={`/profile/${postUser._id}`}>
+                <Link to={`/profile/${postUser._id}`} onMouseOver={()=>setHover(true)} onMouseOut={()=>setHover(false)}>
                     <div className="user-profile-card">
                         <div className="user-profile-top">
                             <img className = "profile" src={postUser.profilePicture.url} alt="Loading..." />
