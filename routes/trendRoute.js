@@ -1,8 +1,7 @@
 const router = require('express').Router();
 
-const {getTrends, getWoeid} = require('../Controllers/TrendController')
+const {getTrends} = require('../Controllers/TrendController')
 
-router.get('/', getTrends);
-router.get("/near-me", getWoeid);
+router.post('/', getTrends);
 
 module.exports = router

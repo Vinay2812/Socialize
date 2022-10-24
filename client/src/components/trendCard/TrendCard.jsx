@@ -16,7 +16,7 @@ const TrendCard = () => {
   useEffect(()=>{
     const getTrends = async()=>{
       try {
-        const res = await API.get(`/trends?woeid=${woeid}`);
+        const res = await API.post(`/trends?woeid=${woeid}`);
         setTrendData(res.data);
       } catch (err) {
         console.log(err)
