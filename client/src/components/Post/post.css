@@ -39,11 +39,11 @@
     display: flex;
     flex-direction: column;
 }
-.postTop > a > .name{
+.name{
     font-size: 1.1rem;
     font-weight: 500;
 }
-.postTop > a > .username{
+.username{
     font-size: 0.8rem;
     font-weight: 400;
     color: var(--lightGray);
@@ -57,6 +57,102 @@
     right: 0.3rem;
     
 }
+
+.user-profile-card{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 0;
+    background-color: #000000;
+    color: var(--white);
+    padding-bottom: 1rem;
+}
+.user-profile-top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    padding-bottom: 0;
+    width: calc(100% - 2rem);
+    position: relative;
+}
+.user-profile-top > .profile{
+    width: 4rem;
+    height: 4rem;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 0.125rem solid var(--white);
+    position: absolute;
+    right: 2rem;
+    bottom: -2rem;
+}
+
+.user-profile-top > .cover{
+    width: 100%;
+    height: 7rem;
+    object-fit: cover;
+}
+.user-profile-info {
+    display: flex;
+    flex-direction: column;
+    padding: 0 1rem;
+
+}
+.name{
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+.username{
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--lightGray);
+    /* margin-left: 0.5rem; */
+}
+.user-profile-bio{
+    white-space: pre-wrap;
+    padding : 0.3rem 1rem;
+    font-weight: 300;
+}
+
+.user-profile-follower-info{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+    padding: 0 1rem;
+
+}
+.user-profile-follower-info > span{
+    display: flex;
+    gap: 0.3rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+.follower-text{
+    font-weight: 200;
+}
+.user-profile-follow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    padding-bottom: 0;
+}
+
+.user-profile-follow > div{
+    padding: 0.5rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border: 0.125rem solid var(--blue);
+    color: var(--blue);
+    border-radius: 2rem;
+}
+
+
 .post > img, .post > video{
     width: 100%;
     object-fit: contain;
@@ -197,8 +293,11 @@
     transition: 200ms ease-in;
 }
 
-@media screen and (max-width: 849px){
+@media screen and (max-width: 700px){
     .postOperationsOptions{
         right: 0;
+    }
+    .user-profile-card{
+        width: 70%;
     }
 }

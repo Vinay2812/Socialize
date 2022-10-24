@@ -19,6 +19,7 @@ import {storage} from "../../firebase/firebase"
 import { ref, deleteObject } from "firebase/storage"
 import { useRef } from 'react'
 import { format } from "timeago.js"
+import { followUser, unfollowUser } from '../../actions/UserAction'
 
 function Dropdown ({setDropDownSelected, postData, userId}){
     const dispatch = useDispatch();
@@ -84,6 +85,7 @@ function Dropdown ({setDropDownSelected, postData, userId}){
 }
 const Post = ({data}) => {
     const {user} = useSelector((state)=>state.authReducer.authData);
+    const {posts} = useSelector((state)=>state.postReducer);
 
     const [dropDownSelected, setDropDownSelected] = useState(false);
 
@@ -143,6 +145,20 @@ const Post = ({data}) => {
 
     const [rows, setRows] = useState(1);
 
+    const [hover, setHover] = useState(false);
+
+    const handleFollow = ()=>{
+        if(user.following.includes(postUser._id)){
+            dispatch(unfollowUser(postUser._id, user)).then(()=>{
+                dispatch(getTimeLinePosts(user._id));
+            });
+        }
+        else{
+            dispatch(followUser(postUser._id, user)).then(()=>{
+                dispatch(getTimeLinePosts(user._id));
+            });
+        }
+    }
   return (
     <>
     <div className="post" >
@@ -150,7 +166,7 @@ const Post = ({data}) => {
         <div className="postTop">
             {/* <img src={process.env.REACT_APP_PUBLIC_FOLDER_IMAGES + postUser.profilePicture} alt=""/> */}
             <img src={profileImage} alt="Loading..."/>
-            <Link to={`/profile/${data.userId}`}>
+            <Link to={`/profile/${data.userId}`} onMouseOver={()=>setHover(true)} onMouseOut={()=>setHover(false)}>
                 <span className='name'>
                     {postUser.firstname} {postUser.lastname}
                 </span>
@@ -160,6 +176,56 @@ const Post = ({data}) => {
                 {format(data.createdAt)}
             </div> 
             {data.userId === user._id ? <MoreVert onClick={()=>setDropDownSelected(true)}/> : "" }
+            {
+                hover ? 
+                <Link to={`/profile/${postUser._id}`}>
+                    <div className="user-profile-card">
+                        <div className="user-profile-top">
+                            <img className = "profile" src={postUser.profilePicture.url} alt="Loading..." />
+                            <img className = "cover" src = {postUser.coverPicture.url} alt="Loading..." />
+                        </div>
+
+                        <div className="user-profile-info">
+                            <span className='name'>
+                                {postUser.firstname} {postUser.lastname}
+                            </span>
+                            <span className='username'>@{postUser.username}</span>
+                        </div>
+                        <div className="user-profile-bio">
+                            {postUser.bio}
+                        </div>
+                        <div className="user-profile-follower-info">
+                            <span>
+                                {postUser.followers.length} 
+                                <span className='follower-text'>followers</span>
+                            </span>
+                            <span>
+                                {postUser.following.length}
+                                <span className='follower-text'>following</span>
+                            </span>
+                            <span>
+                                {posts.filter((post)=>post.userId === postUser._id).length}
+                                <span className='follower-text'>posts</span>
+                            </span>
+                        </div>
+                        <div className="user-profile-follow">
+                            {
+                                 
+                                postUser._id === user._id ? "":
+                                <button 
+                                    className={!user.following.includes(postUser._id)?'button fc-button':'button fc-button unfollow' }
+                                    onClick={handleFollow}
+                                >
+                                    {!user.following.includes(postUser._id)?"follow":"following"}
+                                </button>
+                                
+                            }
+                        </div>
+                    </div>
+                </Link>   
+                : ""
+            }
+            
         </div>
         <div className="description">
             {data.desc}
