@@ -74,10 +74,10 @@ const InfoCard = () => {
                     <CancelOutlined 
                         style={!edit?{display:"none"}:{}} 
                         onClick = {()=>{
-                            setEdit(false);
                             setFormData(prevFormData);
                             setRows(prevFormData.bio.split("\n").length);
-                            toast.warning("Profile Details not updated", toastParameters)
+                            setEdit(false);
+                            toast.warning("Profile Details not updated", toastParameters);
                         }} 
                     />
                 </>
